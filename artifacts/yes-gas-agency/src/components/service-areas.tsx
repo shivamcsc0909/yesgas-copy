@@ -12,33 +12,39 @@ const areas = [
 
 export function ServiceAreas() {
   return (
-    <section className="py-20 bg-gradient-to-b from-orange-50 to-amber-50">
+    <section className="py-20 bg-[#0F172A] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
-            Serving All Corners of Hyderabad
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
+            Poora Hyderabad, Ek Call Mein
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Wherever you are in Hyderabad, our technicians reach you within 2–4 hours
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            Our technicians cover every neighborhood — reach you in 2–4 hours
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-10">
+        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
           {areas.map((area) => (
             <div 
               key={area}
-              className="flex items-center gap-1.5 bg-white border border-orange-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 transition-all cursor-default"
+              className="flex items-center gap-1.5 bg-white/10 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#F97316] hover:border-[#F97316] transition-all cursor-default"
             >
-              <MapPin className="w-4 h-4 text-orange-400" />
+              <MapPin className="w-4 h-4 text-[#F97316] mix-blend-screen" />
               {area}
             </div>
           ))}
         </FadeIn>
 
-        <FadeIn delay={0.3} className="text-center">
-          <p className="text-secondary font-medium text-lg">
-            Don't see your area? Call us — we likely serve you too!
+        <FadeIn delay={0.3} className="text-center flex flex-col items-center gap-6">
+          <p className="text-white/60 font-medium">
+            Don't see your area? Call us — we probably cover you!
           </p>
+          <a 
+            href="tel:+919849000000"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm bg-[#F97316] text-white shadow-[0_4px_14px_rgba(249,115,22,0.3)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.4)] hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Call Now → +91 98490 00000
+          </a>
         </FadeIn>
       </div>
     </section>

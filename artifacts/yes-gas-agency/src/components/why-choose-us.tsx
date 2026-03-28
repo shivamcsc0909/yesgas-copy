@@ -1,80 +1,98 @@
 import { FadeIn } from "./fade-in";
-import { Clock, ShieldCheck, Wrench, BadgeDollarSign, HeartHandshake, CheckCircle } from "lucide-react";
+import { Clock, Award, Package, ShieldCheck, Banknote, Heart } from "lucide-react";
 
 export function WhyChooseUs() {
+  const stats = [
+    { value: "5000+", label: "Happy Customers" },
+    { value: "10+", label: "Years Experience" },
+    { value: "2-4 hrs", label: "Response Time" },
+    { value: "30 Days", label: "Service Warranty" }
+  ];
+
   const features = [
     {
       icon: Clock,
       title: "Same Day Service",
-      description: "We value your time. Our technicians arrive within hours of your booking anywhere in Hyderabad.",
-      color: "text-blue-500",
-      bg: "bg-blue-50"
+      description: "Technician at your door within 2–4 hours. Koi wait nahi!"
+    },
+    {
+      icon: Award,
+      title: "Certified Experts",
+      description: "10+ years experienced, background-verified technicians."
+    },
+    {
+      icon: Package,
+      title: "Original Parts",
+      description: "100% genuine spare parts. No duplicates, ever."
     },
     {
       icon: ShieldCheck,
-      title: "Certified Technicians",
-      description: "Trained, background-checked experts with 10+ years of experience in gas appliances.",
-      color: "text-green-500",
-      bg: "bg-green-50"
-    },
-    {
-      icon: Wrench,
-      title: "Genuine Spare Parts",
-      description: "We use 100% authentic replacement parts to ensure the longevity of your stove.",
-      color: "text-orange-500",
-      bg: "bg-orange-50"
-    },
-    {
-      icon: CheckCircle,
       title: "30-Day Warranty",
-      description: "Total peace of mind. All our repair work is backed by a solid 30-day service guarantee.",
-      color: "text-purple-500",
-      bg: "bg-purple-50"
+      description: "Every repair backed by our solid guarantee."
     },
     {
-      icon: BadgeDollarSign,
-      title: "Transparent Pricing",
-      description: "No hidden charges. You get a clear, upfront quote before we begin any work.",
-      color: "text-rose-500",
-      bg: "bg-rose-50"
+      icon: Banknote,
+      title: "Zero Hidden Cost",
+      description: "Upfront pricing. Jo dikhta hai, wohi lagta hai."
     },
     {
-      icon: HeartHandshake,
-      title: "Safe & Reliable",
-      description: "We follow strict safety protocols. Your family's safety is our top priority.",
-      color: "text-teal-500",
-      bg: "bg-teal-50"
+      icon: Heart,
+      title: "Safety First",
+      description: "We treat your home like our own. Safety protocols strictly followed."
     }
   ];
 
   return (
-    <section className="py-24 bg-gray-50/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
-              Why Thousands Trust Yes Gas Agency
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              We don't just fix stoves; we deliver peace of mind. Here's why Hyderabad chooses us for their kitchen needs.
-            </p>
-          </FadeIn>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, idx) => (
-            <FadeIn key={idx} delay={idx * 0.1}>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-border/50 hover:shadow-lg transition-all duration-300 group">
-                <div className={`w-14 h-14 ${feature.bg} ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-secondary mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
+    <section className="flex flex-col">
+      {/* PART 1 - Stats Banner */}
+      <div className="w-full bg-[#0F172A] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x divide-white/10">
+            {stats.map((stat, idx) => (
+              <FadeIn key={idx} delay={idx * 0.1} className="text-center px-4">
+                <p className="text-4xl md:text-5xl font-black text-[#F97316] mb-2 font-display tracking-tight">
+                  {stat.value}
                 </p>
-              </div>
-            </FadeIn>
-          ))}
+                <p className="text-white/60 font-medium text-sm md:text-base uppercase tracking-wider">
+                  {stat.label}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* PART 2 - Feature Cards */}
+      <div className="w-full bg-white py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] mb-4">
+              Why Hyderabad Trusts Us
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {features.map((feature, idx) => (
+              <FadeIn key={idx} delay={idx * 0.1}>
+                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden h-full flex flex-col">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#F97316] to-[#FB923C] flex items-center justify-center mb-6 text-white shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-3">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-gray-500 leading-relaxed flex-grow">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Hover bottom border */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

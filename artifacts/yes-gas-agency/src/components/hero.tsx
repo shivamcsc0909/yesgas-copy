@@ -1,80 +1,135 @@
 import { FadeIn } from "./fade-in";
-import { ArrowRight, Phone, Star, ShieldCheck, Clock, Wrench } from "lucide-react";
+import { Phone, CheckCircle2, Clock, ShieldCheck, MapPin, Zap, Star } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 pb-16 overflow-hidden bg-secondary">
-      {/* Background Image / Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
-          alt="Abstract gas flame background" 
-          className="w-full h-full object-cover opacity-30 mix-blend-overlay"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/90 to-secondary"></div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0F172A] pt-24 pb-16">
+      {/* Background with radial gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[#F97316]/20 blur-[120px] mix-blend-screen" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-3xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center gap-12">
+        {/* Left Column */}
+        <div className="w-full md:w-1/2 flex flex-col items-start text-left">
           <FadeIn delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-              Hyderabad's #1 Trusted Repair Service
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 text-sm font-medium mb-8 backdrop-blur-sm">
+              <span className="flex h-2 w-2 rounded-full bg-[#F97316] animate-pulse"></span>
+              🔥 Hyderabad's Most Trusted Gas Service
             </div>
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight mb-6">
-              Your Gas Stove Problems, Solved in <span className="text-primary">Hours</span> — Not Days
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-black leading-tight tracking-tight mb-6 text-white">
+              <span className="block">Gas Stove Ki</span>
+              <span className="block gradient-text">Har Problem,</span>
+              <span className="block">Turat Solve!</span>
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.3}>
-            <p className="text-lg sm:text-xl text-white/70 mb-10 max-w-2xl leading-relaxed">
-              Expert technicians at your doorstep, same day. We handle everything from basic cleaning to complex leakage repairs with 100% genuine parts.
+            <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-lg leading-relaxed font-sans">
+              Expert technicians at your doorstep within hours. Gas leak? Broken ignition? Clogged burner? — Aaj hi fix karwao.
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.4} className="flex flex-col sm:flex-row gap-4 mb-12">
-            <a 
-              href="#contact"
-              className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-primary to-orange-600 text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300"
-            >
-              Book a Repair Now
-              <ArrowRight className="w-5 h-5" />
-            </a>
-            <a 
-              href="tel:+919849000000"
-              className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-lg bg-white/5 text-white border border-white/20 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300"
-            >
-              <Phone className="w-5 h-5" />
-              Call Us Now
-            </a>
+          <FadeIn delay={0.4} className="flex flex-wrap gap-3 mb-10">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 text-sm text-white/90">
+              <CheckCircle2 className="w-4 h-4 text-[#22C55E]" />
+              Free Visit
+            </div>
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 text-sm text-white/90">
+              <Zap className="w-4 h-4 text-[#F97316]" />
+              Same Day
+            </div>
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 text-sm text-white/90">
+              <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
+              30-Day Warranty
+            </div>
           </FadeIn>
 
-          <FadeIn delay={0.5}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-white/10">
-              <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                <span className="text-white/80 text-sm font-medium">5000+ Happy Customers</span>
+          <FadeIn delay={0.5} className="flex flex-col gap-4 w-full sm:w-auto min-w-[280px]">
+            <a 
+              href="tel:+919849000000"
+              className="flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg bg-gradient-to-r from-[#F97316] to-[#FB923C] text-white shadow-[0_8px_30px_rgba(249,115,22,0.25)] hover:shadow-[0_8px_30px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all duration-300 w-full"
+            >
+              📞 Call Now: +91 98490 00000
+            </a>
+            <a 
+              href="https://wa.me/919849000000"
+              className="flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg bg-[#22C55E] text-white shadow-[0_8px_30px_rgba(34,197,94,0.2)] hover:shadow-[0_8px_30px_rgba(34,197,94,0.3)] hover:bg-[#16a34a] hover:-translate-y-1 transition-all duration-300 w-full"
+            >
+              💬 Book on WhatsApp
+            </a>
+            <p className="text-center text-sm font-medium text-red-400 mt-2">
+              🔴 Only 3 slots left today — Book now!
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* Right Column (Visual) */}
+        <div className="hidden md:block w-1/2 relative perspective-1000">
+          <FadeIn delay={0.4} direction="left">
+            <div className="relative rotate-2 transform-gpu">
+              {/* Main Card */}
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-3xl p-6 relative z-10 w-full max-w-md mx-auto">
+                <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-[#F97316] animate-pulse" />
+                  <h3 className="text-white font-semibold text-lg">Active Service Status</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 bg-white/5 rounded-xl p-3">
+                    <div className="bg-[#22C55E]/20 p-2 rounded-lg text-[#22C55E]">
+                      <CheckCircle2 className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium">Ramesh K. — Burner Repair</p>
+                      <p className="text-white/50 text-xs">Completed 12 min ago</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 bg-white/5 rounded-xl p-3">
+                    <div className="bg-blue-500/20 p-2 rounded-lg text-blue-400">
+                      <Zap className="w-5 h-5 animate-pulse" />
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium">Priya S. — Gas Leak Fix</p>
+                      <p className="text-white/50 text-xs">🔄 In Progress</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 bg-white/5 rounded-xl p-3">
+                    <div className="bg-[#F97316]/20 p-2 rounded-lg text-[#F97316]">
+                      <Clock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium">Anita R. — Installation</p>
+                      <p className="text-white/50 text-xs">⏳ Scheduled 2:30 PM</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex justify-between items-center px-2">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-white">47</p>
+                    <p className="text-xs text-white/50">repairs today</p>
+                  </div>
+                  <div className="h-8 w-px bg-white/10" />
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-white flex items-center gap-1">4.9<Star className="w-4 h-4 fill-[#F97316] text-[#F97316]" /></p>
+                    <p className="text-xs text-white/50">avg rating</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-primary" />
-                <span className="text-white/80 text-sm font-medium">Same Day Service</span>
+
+              {/* Floating Badges */}
+              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 transform rotate-3 animate-bounce-slow">
+                <p className="text-[#0F172A] font-bold text-sm">5000+ Happy Customers ⭐</p>
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-green-400" />
-                <span className="text-white/80 text-sm font-medium">30-Day Warranty</span>
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 transform -rotate-3 z-20">
+                <p className="text-[#0F172A] font-bold text-sm">30-Day Warranty 🛡️</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Wrench className="w-5 h-5 text-blue-400" />
-                <span className="text-white/80 text-sm font-medium">Genuine Parts</span>
-              </div>
-            </div>
-            
-            <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-4 py-3 mt-6 text-orange-600 text-sm font-semibold text-center">
-              <span className="animate-pulse inline-block mr-2">🔥</span> 
-              High demand today — Only a few slots remaining. Book now!
             </div>
           </FadeIn>
         </div>

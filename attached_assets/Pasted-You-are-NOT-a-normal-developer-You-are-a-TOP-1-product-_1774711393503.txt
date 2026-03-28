@@ -1,0 +1,114 @@
+You are NOT a normal developer.
+
+You are a TOP 1% product designer, elite SaaS UI expert, and conversion-focused frontend engineer.
+
+Your job is to TRANSFORM an already basic landing page into a HIGH-END, PREMIUM, MODERN website that looks like a funded startup product — not a local service site.
+
+⚠️ IMPORTANT:
+The current design looks too basic. You must COMPLETELY redesign it to feel PREMIUM, EXPENSIVE, and HIGH-CONVERTING.
+
+---
+
+🎯 OBJECTIVE:
+
+* Make the client say: “This looks expensive & high-quality”
+* Increase trust instantly
+* Maximize conversions (calls + WhatsApp)
+
+---
+
+🔥 DESIGN DIRECTION (STRICT):
+
+1. Visual Style:
+
+* Use modern SaaS-level UI (inspired by Stripe, Linear, Apple)
+* Glassmorphism / soft gradients / smooth shadows
+* Premium typography (big bold headings + clean spacing)
+* Dark + light contrast sections
+* Use whitespace generously
+
+2. Hero Section (Make it WOW):
+
+* Large bold headline with emotional + problem-solving angle
+* Subheadline with clarity + trust
+* 2 CTAs: “Call Now” + “Book on WhatsApp”
+* Add floating cards / animated UI elements
+* Add subtle motion (fade, slide, parallax feel)
+
+3. Layout Improvements:
+
+* Break monotony (no simple stacked sections)
+* Use alternating layouts (left-right, cards, grids)
+* Add depth (layers, shadows, hover effects)
+
+4. Micro Interactions:
+
+* Button hover animations
+* Card lift effects
+* Smooth scroll animations
+* Section reveal animations
+
+5. Premium Sections (Upgrade all):
+
+* Services → turn into modern icon cards with hover effects
+* Why Choose Us → stats + trust badges + visual layout
+* How It Works → timeline or step UI (not boring list)
+* Testimonials → card carousel style
+* CTA → bold, high-contrast, urgent
+
+6. Conversion Boosters:
+
+* Sticky header with CTA
+* Floating WhatsApp button
+* Urgency text: “Only limited slots today”
+* Add trust indicators:
+
+  * ⭐ ratings
+  * Verified technicians
+  * Same-day service
+
+7. Copy Upgrade:
+
+* Make text feel premium but simple
+* Use Hinglish naturally (not forced)
+* Focus on user pain:
+
+  * “Gas leak ka risk mat lo”
+  * “Aaj hi fix karwao”
+
+8. Image & Visual Direction:
+   For every image, specify clearly:
+   “Use high-quality modern image of [describe]”
+   Avoid cheap stock feel
+
+9. Tech Requirements:
+
+* Use React / Next.js
+* Tailwind CSS
+* Clean reusable components
+* Fully responsive
+* Fast and smooth performance
+
+---
+
+🚫 STRICTLY AVOID:
+
+* Basic template design
+* Plain sections
+* Old-style UI
+* Too much text blocks
+* Local cheap website look
+
+---
+
+💎 FINAL EXPECTATION:
+The output should look like a premium startup landing page worth ₹50,000+ design value.
+
+It should NOT feel like a normal gas service website — it should feel like a branded, high-end service platform.
+
+---
+
+Before finalizing:
+👉 Review your design and IMPROVE it again to make it more premium.
+
+Do not stop at “good”. Push to “exceptional”.
