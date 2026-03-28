@@ -1,0 +1,114 @@
+You are an expert UI/UX designer, conversion-focused copywriter, and senior frontend developer.
+
+Your task is to create a HIGH-CONVERTING, PREMIUM-LOOK landing page for a gas service business similar to “YesGasAgency” but with a UNIQUE and MODERN design (do NOT copy any existing design).
+
+🎯 Goal:
+
+* Impress clients instantly
+* Generate leads (calls + WhatsApp + form submissions)
+* Build trust for local gas services
+
+🧠 Business Context:
+This is a local gas service company that provides:
+
+* Gas stove repair
+* Burner cleaning
+* Ignition problem fixing
+* Gas leakage repair
+* Copper pipeline installation
+
+📍 Target Audience:
+
+* Homeowners
+* Families using LPG gas
+* People looking for quick, trusted repair services
+
+---
+
+🔥 DESIGN REQUIREMENTS:
+
+1. Hero Section (VERY IMPORTANT):
+
+* Strong headline (problem-solving + trust-building)
+* Subheadline (clear value proposition)
+* CTA buttons:
+
+  * “Call Now”
+  * “Book on WhatsApp”
+* Add trust badges (same-day service, verified technicians, etc.)
+* Add a modern visual/illustration suggestion
+
+2. Unique UI Style:
+
+* Clean, modern, slightly bold design
+* Use soft shadows, rounded cards, gradient accents
+* Avoid basic/template look
+* Add subtle animations (hover, fade-in)
+
+3. Sections to Include:
+
+* Services (with icons + short descriptions)
+* “How It Works” (3–4 steps, simple)
+* Why Choose Us (trust points)
+* Customer Testimonials (realistic style)
+* Service Areas (city-based)
+* FAQ section (important for trust)
+* Final CTA section (urgent tone)
+
+4. Conversion Elements:
+
+* Sticky header with Call + WhatsApp
+* Floating WhatsApp button
+* Quick contact form (name + phone only)
+* Urgency text (e.g., “Limited slots today”)
+
+5. Copywriting Style:
+
+* Simple, local-friendly language
+* Mix of Hinglish tone (natural, not forced)
+* Focus on pain points:
+
+  * gas leakage fear
+  * burner not working
+  * urgent repair need
+
+6. Technical Requirements:
+
+* Use any modern stack (React / Next.js preferred)
+* Fully responsive (mobile-first)
+* Clean, structured code
+* SEO-friendly headings
+* Fast loading
+
+7. Image Guidance:
+   Wherever images are needed, clearly mention:
+   “Use image of [describe image]”
+
+---
+
+💡 EXTRA (IMPORTANT FOR IMPRESSING CLIENT):
+
+* Add micro-interactions
+* Add icons (Lucide or similar)
+* Add subtle animation in hero section
+* Make it feel like a premium startup website, not a local cheap site
+
+---
+
+🚫 Avoid:
+
+* Copying YesGasAgency design
+* Basic template UI
+* Too much text
+* Cluttered layout
+
+---
+
+🎯 OUTPUT FORMAT:
+
+* Full landing page code
+* Proper section structure
+* Ready-to-run
+* Clean + production-quality
+
+Make sure the final result looks like a high-end service brand website that builds instant trust and converts visitors into customers.

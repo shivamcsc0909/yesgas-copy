@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Flame, Phone, Menu, X } from "lucide-react";
+import { Flame, Phone, Menu, X, MessageSquare } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,6 +60,13 @@ export function Navbar() {
             <Phone className="w-4 h-4" />
             <span>+91 98490 00000</span>
           </a>
+          <a
+            href="https://wa.me/919849000000"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold bg-green-500 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:-translate-y-0.5 hover:bg-green-600 transition-all duration-200"
+          >
+            <MessageSquare className="w-4 h-4" />
+            <span>WhatsApp Us</span>
+          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -98,6 +105,13 @@ export function Navbar() {
           >
             <Phone className="w-5 h-5" />
             <span>Call +91 98490 00000</span>
+          </a>
+          <a 
+            href="https://wa.me/919849000000"
+            className="flex items-center justify-center gap-2 mt-2 px-6 py-3 rounded-xl font-semibold bg-green-500 text-white shadow-md hover:bg-green-600"
+          >
+            <MessageSquare className="w-5 h-5" />
+            <span>WhatsApp Us</span>
           </a>
         </div>
       </div>

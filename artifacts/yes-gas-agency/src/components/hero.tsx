@@ -71,6 +71,11 @@ export function Hero() {
                 <span className="text-white/80 text-sm font-medium">Genuine Parts</span>
               </div>
             </div>
+            
+            <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-4 py-3 mt-6 text-orange-600 text-sm font-semibold text-center">
+              <span className="animate-pulse inline-block mr-2">🔥</span> 
+              High demand today — Only a few slots remaining. Book now!
+            </div>
           </FadeIn>
         </div>
       </div>
