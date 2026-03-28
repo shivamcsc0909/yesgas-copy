@@ -1,0 +1,101 @@
+You are an elite, award-winning UI designer and frontend engineer.
+
+Your task is to UPGRADE the existing hero section into a VISUALLY STRIKING, HIGH-END, PREMIUM EXPERIENCE.
+
+⚠️ IMPORTANT:
+Current hero section looks clean but TOO SIMPLE.
+You must ADD DEPTH, VISUAL INTEREST, and PREMIUM FEEL.
+
+DO NOT redesign from scratch blindly — IMPROVE what exists and make it 10x better.
+
+---
+
+🎯 GOAL:
+Make the hero section look like a ₹1L+ design quality.
+Client should feel: “This is next-level, not a normal service website.”
+
+---
+
+🔥 WHAT TO IMPROVE (THINK & EXECUTE):
+
+1. VISUAL DEPTH:
+
+* Add layered gradients (multiple color blends, not flat)
+* Add glow effects behind key elements
+* Add subtle grid/noise texture for richness
+* Create light + dark contrast zones
+
+2. HERO RIGHT SIDE (VERY IMPORTANT):
+
+* Current card looks basic → transform into a PREMIUM GLASSMORPHIC DASHBOARD
+* Add blur background + gradient border
+* Add floating mini-cards (ratings, live jobs, stats)
+* Add depth using shadows + layering
+* Make it feel like a real product UI, not a simple box
+
+3. FLOATING ELEMENTS:
+
+* Add animated floating badges:
+
+  * “4.9★ Rating”
+  * “5000+ Repairs”
+  * “Same-Day Service”
+* Use motion (slow float, not distracting)
+
+4. TYPOGRAPHY UPGRADE:
+
+* Improve heading hierarchy
+* Add gradient text highlight on key words
+* Increase spacing and breathing room
+* Make headline more bold and premium
+
+5. CTA IMPROVEMENT:
+
+* Make buttons more premium:
+
+  * gradient fill
+  * glow on hover
+  * slight scale animation
+* Add micro-interactions
+
+6. BACKGROUND:
+
+* Add radial gradients / mesh gradient
+* Add subtle animated background effect (very light)
+* Avoid flat dark background
+
+7. TRUST ELEMENTS:
+
+* Convert badges into modern pill UI with icons
+* Add subtle animation or hover
+
+8. ANIMATIONS:
+
+* Add entrance animation (fade + upward motion)
+* Add hover effects on cards/buttons
+* Keep it smooth and premium (not flashy)
+
+---
+
+🚫 AVOID:
+
+* Flat design
+* Basic boxes
+* Static layout
+* Cheap gradients
+
+---
+
+⚡ OUTPUT RULES:
+
+* Only output updated hero section code
+* No explanation
+* No Hindi
+* Keep it clean and production-ready
+
+---
+
+💎 FINAL STEP:
+After finishing → review and enhance again to make it EVEN MORE PREMIUM.
+
+Push beyond “good” → reach “exceptional”.
