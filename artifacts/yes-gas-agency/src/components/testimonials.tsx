@@ -1,115 +1,178 @@
+import { useState } from "react";
 import { FadeIn } from "./fade-in";
-import { Star, Quote, CheckCircle2 } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, CheckCircle2, CloudLightning, MessageCircle, Heart, Sparkles } from "lucide-react";
+
+const reviews = [
+  {
+    name: "Rohan Mehra",
+    area: "Madhapur",
+    service: "Gas Leakage Repair",
+    rating: 5,
+    text: "There was a gas pipe leaking in my kitchen — extremely dangerous. Yes Gas Agency sent a technician within 40 minutes. He was professional, fixed it instantly, and did a full safety check. Best service in Hyderabad!",
+    avatar: "RM",
+    color: "#F97316"
+  },
+  {
+    name: "Priya Sharma",
+    area: "Gachibowli",
+    service: "Ignition Repair",
+    rating: 5,
+    text: "My ignition had been broken for months. Their team fixed it in under 20 minutes. Incredibly fast and the price was very reasonable. I cooked that evening — the blue flame is perfect now!",
+    avatar: "PS",
+    color: "#60A5FA"
+  },
+  {
+    name: "Vikram Reddy",
+    area: "Kukatpally",
+    service: "Stove Deep Clean",
+    rating: 5,
+    text: "Absolutely stunning service. My stove looks brand new after the deep cleaning. The technician arrived on time and was very tidy with his work. Highly recommended for any kitchen service.",
+    avatar: "VR",
+    color: "#10B981"
+  },
+];
 
 export function Testimonials() {
-  const smallReviews = [
-    {
-      name: "Priya Sharma",
-      location: "Gachibowli",
-      text: "Ignition problem tha kaafi time se. Inki team ne 20 minute mein fix kar di. Bahut fast aur affordable service!",
-      initial: "P",
-      color: "bg-purple-100 text-purple-700"
-    },
-    {
-      name: "Syed Ahmed",
-      location: "Banjara Hills",
-      text: "Copper pipeline installation ke liye call kiya. Clean work, zero mess. Price bhi pehle bata diya — no surprises!",
-      initial: "S",
-      color: "bg-blue-100 text-blue-700"
-    },
-    {
-      name: "Anitha Reddy",
-      location: "Madhapur",
-      text: "5 saal purana stove bilkul new jaisa kar diya. Burner cleaning kamaal ki thi. Blue flame wapas aa gaya!",
-      initial: "A",
-      color: "bg-green-100 text-green-700"
-    }
-  ];
+  const [active, setActive] = useState(0);
+
+  const next = () => setActive((c) => (c === reviews.length - 1 ? 0 : c + 1));
+  const prev = () => setActive((c) => (c === 0 ? reviews.length - 1 : c - 1));
 
   return (
-    <section id="testimonials" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full border border-gray-200 mb-6">
-              <span className="font-bold text-[#0F172A]">4.9</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#F97316] text-[#F97316]" />
-                ))}
-              </div>
-              <span className="text-gray-500 text-sm font-medium border-l border-gray-300 pl-2">Average Rating • 5000+ Reviews</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] mb-4">
-              5000+ Happy Families Can't Be Wrong
-            </h2>
-            <p className="text-lg text-gray-500">
-              Real reviews from real Hyderabad customers
-            </p>
-          </FadeIn>
-        </div>
+    <section 
+      id="testimonials" 
+      className="relative py-40 overflow-hidden bg-[#05091A]"
+    >
+      {/* Background System */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#05091A] to-transparent z-10" />
+        <div className="absolute inset-0 mesh-dots opacity-[0.05]" />
+        <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] rounded-full blur-[120px]" 
+          style={{ background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 65%)" }} />
+      </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Featured Testimonial */}
-          <FadeIn className="w-full lg:w-2/3">
-            <div className="h-full bg-gradient-to-br from-[#0F172A] to-[#1e2d47] text-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl flex flex-col justify-between">
-              {/* Decorative quote mark */}
-              <Quote className="absolute -top-4 -right-4 w-32 h-32 text-white/5 rotate-12" />
-              <Quote className="w-10 h-10 text-[#F97316] mb-8 relative z-10" />
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-20 xl:gap-32">
+          
+          {/* — Left: Content — */}
+          <div className="w-full lg:w-[45%]">
+            <FadeIn>
+              <div className="section-label section-label-dark mb-10">Social Proof</div>
+              <h2 className="text-white font-display font-black tracking-tighter"
+                style={{ fontSize: "clamp(3.5rem, 6vw, 4.8rem)", lineHeight: 0.95 }}>
+                Hyderabad's <br />
+                <span className="shimmer-text">Favorite.</span>
+              </h2>
               
-              <div className="flex gap-1 mb-6 relative z-10">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#F97316] text-[#F97316]" />
-                ))}
-              </div>
-              
-              <p className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-10 relative z-10 text-white/90">
-                "Bahut accha service tha! Mere gas pipe se leak aa raha tha, jo ki bahut dangerous tha. Yes Gas Agency ka technician 40 minute mein aaya aur professionally fix kiya. Transparent pricing, no hidden charges. Highly recommended to all Hyderabad families!"
-              </p>
-              
-              <div className="flex items-center justify-between mt-auto relative z-10">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F97316] to-[#FB923C] flex items-center justify-center text-xl font-bold">
-                    R
+              <div className="my-12 space-y-10">
+                <div className="flex items-start gap-6">
+                  <div className="w-14 h-14 rounded-2xl glass-dark grad-border flex items-center justify-center shrink-0">
+                    <Star className="w-7 h-7 fill-amber-400 text-amber-400" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg">Ramesh Kumar</h4>
-                    <p className="text-white/60">Kukatpally</p>
+                    <h4 className="text-white font-black text-xl mb-1">4.9 / 5.0 Global Rating</h4>
+                    <p className="text-white/30 font-medium leading-relaxed max-w-sm">Verified by 5,000+ independent reviews across major service zones.</p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 bg-[#22C55E]/20 text-[#22C55E] px-4 py-2 rounded-full font-medium text-sm">
-                  <CheckCircle2 className="w-4 h-4" />
-                  Verified Customer
+                <div className="flex items-start gap-6">
+                   <div className="w-14 h-14 rounded-2xl glass-dark grad-border flex items-center justify-center shrink-0">
+                      <Sparkles className="w-7 h-7 text-emerald-400" />
+                   </div>
+                   <div>
+                      <h4 className="text-white font-black text-xl mb-1">Elite Standard Fix</h4>
+                      <p className="text-white/30 font-medium leading-relaxed max-w-sm">Every repair is checked by a senior expert before final sign-off.</p>
+                   </div>
                 </div>
               </div>
-            </div>
-          </FadeIn>
 
-          {/* 3 Smaller Cards */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-6">
-            {smallReviews.map((review, idx) => (
-              <FadeIn key={idx} delay={0.2 + idx * 0.1} className="h-full">
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-gray-200 transition-colors h-full flex flex-col">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#F97316] text-[#F97316]" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 italic mb-6 text-sm md:text-base flex-grow">
-                    "{review.text}"
-                  </p>
-                  <div className="flex items-center gap-3 mt-auto">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${review.color}`}>
-                      {review.initial}
+              {/* Avatar Stack Footer */}
+              <div className="flex items-center gap-6 p-8 rounded-[40px] glass-dark grad-border shadow-2xl relative overflow-hidden">
+                <div className="flex -space-x-4">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <div key={i} className="w-14 h-14 rounded-full border-[4px] border-[#0A0F26] bg-slate-800 flex items-center justify-center text-xs font-black text-white" style={{ zIndex: 10-i }}>
+                      {["RK", "PS", "VR", "SA", "MV"][i-1]}
                     </div>
-                    <div>
-                      <h4 className="font-bold text-[#0F172A] text-sm">{review.name}</h4>
-                      <p className="text-xs text-gray-500">{review.location}</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </FadeIn>
-            ))}
+                <div>
+                   <p className="text-white font-black text-lg">Trusted by Neighborhoods</p>
+                   <p className="text-white/20 text-xs font-bold uppercase tracking-widest mt-1">Community Approved</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* — Right: Dynamic 3D Stacked Cards — */}
+          <div className="w-full lg:w-[55%] relative h-[500px] flex items-center justify-center">
+            <FadeIn direction="left" delay={0.3}>
+               <div className="relative w-full max-w-[500px] h-[400px]">
+                  
+                  {/* Layered Cards Logic */}
+                  {reviews.map((review, i) => {
+                     const isFront = i === active;
+                     const isNext = i === (active + 1) % reviews.length;
+                     const isThird = i === (active + 2) % reviews.length;
+                     
+                     let transform = "scale(0.8) translateY(100px) rotate(0deg)";
+                     let zIndex = 0;
+                     let opacity = 0;
+                     let blur = "blur(10px)";
+
+                     if (isFront) {
+                        transform = "scale(1) translateY(0) rotate(0deg)";
+                        zIndex = 30;
+                        opacity = 1;
+                        blur = "blur(0px)";
+                     } else if (isNext) {
+                        transform = "scale(0.92) translateY(30px) rotate(-3deg) translateX(40px)";
+                        zIndex = 20;
+                        opacity = 0.5;
+                        blur = "blur(4px)";
+                     } else if (isThird) {
+                        transform = "scale(0.84) translateY(60px) rotate(-6deg) translateX(80px)";
+                        zIndex = 10;
+                        opacity = 0.2;
+                        blur = "blur(8px)";
+                     }
+
+                     return (
+                        <div 
+                          key={i}
+                          className="absolute inset-0 rounded-[48px] glass-dark grad-border backdrop-blur-3xl p-12 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col items-start justify-between shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
+                          style={{ transform, zIndex, opacity, filter: blur }}
+                        >
+                           <Quote className="w-12 h-12 text-[#F97316] mb-8 opacity-50" />
+                           <p className="text-white font-bold text-xl leading-relaxed mb-10 line-clamp-4">
+                              "{review.text}"
+                           </p>
+
+                           <div className="flex items-center gap-5 pt-8 border-t border-white/5 w-full">
+                              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-black text-white" style={{ background: `linear-gradient(135deg, ${review.color}, #000)` }}>
+                                 {review.avatar}
+                              </div>
+                              <div className="flex-1">
+                                 <h4 className="text-white font-black text-lg">{review.name}</h4>
+                                 <p className="text-white/20 text-xs font-bold uppercase tracking-widest mt-1">{review.area} · {review.service}</p>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                 {[...Array(5)].map((_, i) => <Star key={i} style={{ width: 12, height: 12, fill: '#FBBF24', color: '#FBBF24' }} />)}
+                              </div>
+                           </div>
+                        </div>
+                     );
+                  })}
+
+                  {/* Navigation Controls */}
+                  <div className="absolute -bottom-20 right-0 flex gap-4 z-[40]">
+                     <button onClick={prev} className="w-14 h-14 rounded-2xl border border-white/10 bg-white/5 hover:bg-[#F97316] hover:text-white transition-all flex items-center justify-center text-white/40">
+                        <ChevronLeft className="w-6 h-6" />
+                     </button>
+                     <button onClick={next} className="w-14 h-14 rounded-2xl border border-white/10 bg-[#F97316] text-white hover:scale-105 transition-all flex items-center justify-center shadow-xl">
+                        <ChevronRight className="w-6 h-6" />
+                     </button>
+                  </div>
+               </div>
+            </FadeIn>
           </div>
         </div>
       </div>

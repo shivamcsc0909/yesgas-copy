@@ -1,0 +1,120 @@
+You are a TOP-TIER product designer and senior frontend engineer.
+
+Your task is to UPGRADE the entire landing page to a PREMIUM, HIGH-END, ₹30k+ QUALITY WEBSITE.
+
+⚠️ IMPORTANT:
+Current website is clean but feels like a template/local service site.
+You must transform it into a MODERN, BRANDED, HIGH-CONVERTING EXPERIENCE.
+
+Do NOT rebuild blindly — IMPROVE structure, but ELEVATE design massively.
+
+---
+
+🎯 GOAL:
+
+* Make it look like a premium startup/service brand
+* Client should feel: “This looks expensive and high quality”
+* Increase trust + conversions
+
+---
+
+🔥 CORE IMPROVEMENTS (MANDATORY):
+
+1. DESIGN DEPTH & VISUAL HIERARCHY:
+
+* Add layered backgrounds (gradients, radial lights, subtle textures)
+* Create contrast between sections (no same background flow)
+* Use spacing generously (premium feel = breathing space)
+
+2. HERO SECTION (MAKE IT ELITE):
+
+* Enhance current hero (do not remove structure completely)
+* Add:
+
+  * glow effects
+  * layered gradients
+  * animated floating elements
+* Transform right-side UI into a REAL PRODUCT-STYLE DASHBOARD (glassmorphism + depth)
+* Improve typography (bigger, bolder, cleaner)
+
+3. SECTION REDESIGN (IMPORTANT):
+   Avoid repeating same card style everywhere.
+
+* “Why Choose Us” → convert into premium feature grid with icons + hover effects
+* “Problems” → redesign into visual tiles with better hierarchy
+* “How It Works” → timeline or step UI with connectors
+* Testimonials → modern card + carousel feel
+* CTA sections → bold, high contrast, strong conversion design
+
+4. CARD SYSTEM UPGRADE:
+   Use variety:
+
+* glass cards
+* gradient border cards
+* elevated shadow cards
+* interactive hover cards
+
+NO repetitive boxes.
+
+5. MICRO INTERACTIONS:
+
+* Hover lift effects
+* Smooth transitions
+* Scroll reveal animations
+* Button glow/scale effects
+
+6. TYPOGRAPHY:
+
+* Strong heading hierarchy
+* Bigger headlines
+* Better spacing
+* Highlight keywords using gradient text
+
+7. COLOR & STYLE:
+
+* Use a premium color system (dark base + vibrant accent)
+* Add glow accents (orange/green but refined)
+* Avoid flat colors
+
+8. TRUST & CONVERSION:
+
+* Improve badges (modern pill style)
+* Add rating visuals properly
+* Make CTA sections irresistible
+
+9. REMOVE LOCAL FEEL:
+
+* It should NOT feel like a basic gas service website
+* It should feel like a BRAND
+
+---
+
+🚫 STRICTLY AVOID:
+
+* Flat UI
+* Repeating same components
+* Basic template sections
+* Clutter
+* Cheap gradients
+
+---
+
+⚡ OUTPUT RULES:
+
+* Output FULL updated code
+* No explanation
+* No Hindi text
+* Clean, production-ready
+
+---
+
+💎 FINAL STEP:
+After completing → REVIEW AGAIN and improve:
+
+* spacing
+* animations
+* visual depth
+
+Push it from “good” → “exceptional” → “premium”.
+
+Do not stop early.

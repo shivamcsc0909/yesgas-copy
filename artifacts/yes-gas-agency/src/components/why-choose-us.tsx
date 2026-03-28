@@ -1,98 +1,129 @@
 import { FadeIn } from "./fade-in";
-import { Clock, Award, Package, ShieldCheck, Banknote, Heart } from "lucide-react";
+import { ShieldCheck, Clock, CheckCircle, BadgeCheck, Zap, Sparkles, Phone, Award } from "lucide-react";
+
+const stats = [
+  { label: "Happy Customers", value: "5,000+", icon: Award, color: "#F97316" },
+  { label: "Years Experience", value: "10+", icon: ShieldCheck, color: "#60A5FA" },
+  { label: "Response Time", value: "2-4 hrs", icon: Clock, color: "#FBBF24" },
+  { label: "Service Warranty", value: "30 Days", icon: BadgeCheck, color: "#10B981" },
+];
+
+const features = [
+  {
+    title: "Certified Experts",
+    description: "Every technician is background-verified and professionally trained for all major gas appliance brands.",
+    icon: CheckCircle,
+    type: "glass-light",
+    accent: "#F97316",
+  },
+  {
+    title: "Safety First Protocol",
+    description: "Multi-point safety checks performed after every repair to ensure zero leakage and total peace of mind.",
+    icon: ShieldCheck,
+    type: "grad-border",
+    accent: "#60A5FA",
+  },
+  {
+    title: "Transparent Pricing",
+    description: "No hidden charges. Get a clear estimate before the work begins. Pay only for what you see.",
+    icon: Zap,
+    type: "minimal",
+    accent: "#FB923C",
+  },
+];
 
 export function WhyChooseUs() {
-  const stats = [
-    { value: "5000+", label: "Happy Customers" },
-    { value: "10+", label: "Years Experience" },
-    { value: "2-4 hrs", label: "Response Time" },
-    { value: "30 Days", label: "Service Warranty" }
-  ];
-
-  const features = [
-    {
-      icon: Clock,
-      title: "Same Day Service",
-      description: "Technician at your door within 2–4 hours. Koi wait nahi!"
-    },
-    {
-      icon: Award,
-      title: "Certified Experts",
-      description: "10+ years experienced, background-verified technicians."
-    },
-    {
-      icon: Package,
-      title: "Original Parts",
-      description: "100% genuine spare parts. No duplicates, ever."
-    },
-    {
-      icon: ShieldCheck,
-      title: "30-Day Warranty",
-      description: "Every repair backed by our solid guarantee."
-    },
-    {
-      icon: Banknote,
-      title: "Zero Hidden Cost",
-      description: "Upfront pricing. Jo dikhta hai, wohi lagta hai."
-    },
-    {
-      icon: Heart,
-      title: "Safety First",
-      description: "We treat your home like our own. Safety protocols strictly followed."
-    }
-  ];
-
   return (
-    <section className="flex flex-col">
-      {/* PART 1 - Stats Banner */}
-      <div className="w-full bg-[#0F172A] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x divide-white/10">
-            {stats.map((stat, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1} className="text-center px-4">
-                <p className="text-4xl md:text-5xl font-black text-[#F97316] mb-2 font-display tracking-tight">
-                  {stat.value}
-                </p>
-                <p className="text-white/60 font-medium text-sm md:text-base uppercase tracking-wider">
-                  {stat.label}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
+    <section className="relative overflow-hidden pt-36 pb-40 bg-white rounded-t-[60px] -mt-10 shadow-[0_-30px_60px_rgba(0,0,0,0.4)]">
+      {/* Background Ornaments */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-slate-50 to-transparent opacity-50" />
+        <div className="absolute inset-0 mesh-dots opacity-[0.03]" />
       </div>
 
-      {/* PART 2 - Feature Cards */}
-      <div className="w-full bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-[#0F172A] mb-4">
-              Why Hyderabad Trusts Us
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Statistics Strip (Now on Top for High Contrast) */}
+        <FadeIn className="mb-32">
+          <div 
+            className="rounded-[40px] overflow-hidden grad-border shadow-[0_45px_100px_rgba(0,0,0,0.12)] relative"
+            style={{ 
+              background: "linear-gradient(135deg, #0A0F26 0%, #05091A 100%)",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
+            <div className="relative divide-y divide-white/5 lg:divide-y-0 lg:divide-x lg:divide-white/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat, i) => (
+                <div 
+                  key={i} 
+                  className="px-12 py-14 flex flex-col items-center lg:items-start transition-all duration-400 group hover:bg-white/[0.04]"
+                >
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 bg-white/5 shadow-xl transition-all group-hover:scale-110 group-hover:rotate-6">
+                    <stat.icon style={{ width: 28, height: 28, color: stat.color }} />
+                  </div>
+                  <h3 className="text-5xl font-black text-white mb-3 tracking-tighter shimmer-text">
+                    {stat.value}
+                  </h3>
+                  <p className="text-white/30 font-black uppercase tracking-[0.2em] text-[10px]">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row items-end gap-12 mb-24">
+          <FadeIn className="lg:max-w-2xl">
+            <h2 
+              className="text-[#060B1E] font-display font-black tracking-tighter mb-8"
+              style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: 0.95 }}
+            >
+              Why Hyderabad <br />
+              <span className="shimmer-text">Trusts Us.</span>
             </h2>
           </FadeIn>
+          <FadeIn className="lg:max-w-md ml-auto" delay={0.1}>
+            <p className="text-slate-500 font-bold leading-relaxed text-xl border-l-[6px] border-[#F97316] pl-10">
+              "We provide industrial-grade reliability to the home kitchen, ensuring safety with an elite finish."
+            </p>
+          </FadeIn>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature, idx) => (
-              <FadeIn key={idx} delay={idx * 0.1}>
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden h-full flex flex-col">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#F97316] to-[#FB923C] flex items-center justify-center mb-6 text-white shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-[#0F172A] mb-3">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-gray-500 leading-relaxed flex-grow">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Hover bottom border */}
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Feature Grid with Variety Card Styles */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {features.map((feature, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div 
+                className={`h-full min-h-[440px] p-12 rounded-[48px] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] group relative overflow-hidden flex flex-col ${
+                  feature.type === 'glass-light' ? 'glass-light shadow-2xl border-white' : 
+                  feature.type === 'grad-border' ? 'grad-border bg-white shadow-xl' : 
+                  'bg-slate-50 border border-slate-100'
+                }`}
+              >
+                {/* Surface Mesh */}
+                <div className="absolute inset-0 mesh-dots opacity-[0.03] group-hover:opacity-[0.06] pointer-events-none" />
+                
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-12 bg-white shadow-lg transition-all group-hover:scale-110 group-hover:rotate-6">
+                  <feature.icon style={{ width: 32, height: 32, color: feature.accent }} />
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+                
+                <h3 className="text-2xl font-black text-[#040816] mb-6 tracking-tight leading-tight transition-colors group-hover:text-[#F97316]">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-slate-500 font-bold leading-relaxed mb-10 flex-1">
+                  {feature.description}
+                </p>
+
+                <div className="mt-auto flex items-center gap-3">
+                   <div className="h-1 w-12 rounded-full bg-[#F97316] opacity-30 group-hover:w-24 group-hover:opacity-100 transition-all duration-500" />
+                   <Sparkles className="w-5 h-5 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
