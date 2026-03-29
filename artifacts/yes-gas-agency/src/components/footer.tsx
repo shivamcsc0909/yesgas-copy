@@ -7,7 +7,10 @@ export function Footer() {
     <footer 
       className="relative text-blue-50 pt-20 pb-8 mt-10 overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #0284c7 0%, #1e3a8a 100%)",
+        background: `linear-gradient(rgba(10, 15, 30, 0.75), rgba(10, 15, 30, 0.85)), url("https://images.unsplash.com/photo-1629234358103-5b5ee53ece9c?auto=format&fit=crop&q=80&w=1400")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Top Edge Wave */}

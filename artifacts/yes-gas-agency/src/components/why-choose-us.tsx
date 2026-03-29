@@ -24,7 +24,7 @@ export function WhyChooseUs() {
             
             <div className="relative w-full max-w-[500px]">
               <img 
-                src="https://images.unsplash.com/photo-1542060748-10c28b62716f?auto=format&fit=crop&q=80&w=800&h=800" 
+                src="https://images.unsplash.com/photo-1771122453274-d3270e73cf94?auto=format&fit=crop&q=80&w=800&h=800"
                 alt="Safe Gas Appliance Servicing"
                 className="w-full rounded-[2.5rem] shadow-premium object-cover border-[6px] border-white z-10 relative"
                 style={{ height: "540px" }}
