@@ -1,137 +1,93 @@
-import { FadeIn } from "./fade-in";
-import { Phone, Calendar, Wrench, CheckCircle2, ChevronRight, Zap, Sparkles } from "lucide-react";
+import { PhoneCall, Truck, Wrench } from "lucide-react";
 
 const steps = [
   {
-    number: "01",
-    title: "Book in 60 Seconds",
-    desc: "Call us or fill out our high-speed form. We'll confirm your preferred time slot within minutes.",
-    Icon: Phone,
-    color: "#F97316",
-    delay: 0,
-    accent: "orange"
+    icon: PhoneCall,
+    step: "STEP 1",
+    title: "Call or WhatsApp Us",
+    desc: "Reach us in under 2 minutes. Tell us your issue and location.",
+    highlight: "Available 8 AM – 8 PM, 7 days a week.",
+    color: "#eab308", // Yellow
+    bg: "#fefce8"
   },
   {
-    number: "02",
-    title: "Expert at Your Door",
-    desc: "A background-verified technician arrives within 2–4 hours. No delays, no excuses — just professional gear.",
-    Icon: Calendar,
-    color: "#60A5FA",
-    delay: 0.2,
-    accent: "blue"
+    icon: Truck,
+    step: "STEP 2",
+    title: "Technician at Your Door",
+    desc: "A certified, ID-verified technician reaches you in 2–4 hours.",
+    highlight: "Get SMS with technician ETA.",
+    color: "#3b82f6", // Blue
+    bg: "#eff6ff"
   },
   {
-    number: "03",
-    title: "Fixed. Guaranteed.",
-    desc: "Your appliance is repaired correctly the first time — backed by our iron-clad 30-day service warranty.",
-    Icon: CheckCircle2,
-    color: "#10B981",
-    delay: 0.4,
-    accent: "emerald"
-  },
+    icon: Wrench,
+    step: "STEP 3",
+    title: "Fixed, Safe & Guaranteed",
+    desc: "Problem resolved correctly the first time with safety testing.",
+    highlight: "Free replacement within 30 days.",
+    color: "#22c55e", // Green
+    bg: "#f0fdf4"
+  }
 ];
 
 export function HowItWorks() {
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
-      {/* Background System */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 inset-x-0 h-px mesh-grid-light opacity-60" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.02) 0%, transparent 65%)" }} />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-24">
-          <div className="section-label mb-6" style={{ margin: "0 auto 20px" }}>The Process</div>
-          <h2 
-            className="text-[#060B1E] font-display font-extrabold tracking-tighter"
-            style={{ fontSize: "clamp(2.8rem, 5vw, 4rem)", lineHeight: 1.1 }}
-          >
-            Simple. Fast. <br />
-            <span className="shimmer-text">Zero Friction.</span>
+    <section id="how-it-works" className="section-padding bg-[#f4f7fb] border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header matching reference block-center styling */}
+        <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/50 text-orange-700 font-bold text-sm uppercase tracking-widest mb-4">
+            How It Works
+          </div>
+          <h2 className="font-display font-black text-gray-900 leading-tight tracking-tight mb-5" style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}>
+            Fixed in <span className="text-gradient-orange">3 Simple Steps</span>
           </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium mt-6">
-            From first call to blue flame — we've optimized every second to save you time and stress.
+          <p className="text-lg text-slate-500">
+            From first call to working stove — the whole process is designed to be fast and hassle-free.
           </p>
-        </FadeIn>
-
-        <div className="relative">
-          {/* Animated Timeline Connector Line */}
-          <div className="hidden lg:block absolute top-[120px] left-[15%] right-[15%] h-1 border-t-4 border-dashed border-slate-100">
-            <div 
-              className="absolute top-[-4px] left-0 h-1.5 w-[50px] bg-gradient-to-r from-transparent via-[#F97316] to-transparent" 
-              style={{ animation: "pulseRing 4s linear infinite" }}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-20">
-            {steps.map((step, i) => (
-              <FadeIn key={i} delay={step.delay}>
-                <div className="flex flex-col items-center text-center group relative">
-                  
-                  {/* Step Number Circle */}
-                  <div className="relative mb-12">
-                    <div 
-                      className="w-24 h-24 rounded-full flex items-center justify-center text-2xl font-black transition-all duration-500 glass-dark grad-border group-hover:scale-110 group-hover:rotate-6 shadow-2xl relative z-10"
-                      style={{ color: step.color, background: '#05091A' }}
-                    >
-                      {step.number}
-                      {/* Glow Behind Circle */}
-                      <div 
-                        className="absolute inset-[-10px] rounded-full opacity-0 group-hover:opacity-20 transition-opacity blur-xl"
-                        style={{ background: step.color }}
-                      />
-                    </div>
-                    
-                    {/* Floating Pulse Dot */}
-                    <div 
-                      className="absolute -bottom-2 right-0 w-6 h-6 rounded-full border-4 border-white flex items-center justify-center z-20 shadow-lg"
-                      style={{ background: step.color }}
-                    >
-                      <Zap style={{ width: 10, height: 10, color: 'white' }} />
-                    </div>
-                  </div>
-
-                  {/* Step Content Card */}
-                  <div className="p-8 rounded-[36px] bg-slate-50 border border-slate-100 shadow-sm transition-all duration-500 group-hover:bg-white group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] group-hover:-translate-y-2 group-hover:border-[#F97316]/20">
-                    <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-[0.6rem] font-black tracking-[0.2em] uppercase text-slate-400 group-hover:bg-[#F97316]/10 group-hover:text-[#F97316] transition-colors">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      Step {step.number}
-                    </div>
-                    <h3 className="text-2xl font-black text-[#060B1E] mb-4 tracking-tight group-hover:text-[#F97316] transition-colors leading-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-slate-500 leading-relaxed font-medium">
-                      {step.desc}
-                    </p>
-                  </div>
-
-                  {/* Right Arrow (Mobile/Desktop connector) */}
-                  {i < steps.length - 1 && (
-                    <div className="lg:hidden my-8 transform rotate-90">
-                      <ChevronRight className="w-8 h-8 text-slate-200" />
-                    </div>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
 
-        <FadeIn className="text-center mt-24" delay={0.5}>
-          <div className="inline-flex items-center gap-4 rounded-3xl p-6 glass-dark grad-border bg-[#05091A] shadow-2xl">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-              <Zap className="w-6 h-6 text-emerald-400" />
+        {/* 3 Step Cards - floating style matching the premium layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((item, idx) => (
+            <div 
+              key={idx} 
+              className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-premium transition-transform hover:-translate-y-2 relative overflow-hidden group"
+            >
+              {/* Subtle top border accent matching the step color */}
+              <div 
+                className="absolute top-0 left-0 w-full h-1.5 transition-all duration-300 opacity-50 group-hover:opacity-100" 
+                style={{ backgroundColor: item.color }} 
+              />
+              
+              <div className="flex justify-between items-start mb-8">
+                <div 
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center transform transition-transform group-hover:scale-110 group-hover:rotate-3"
+                  style={{ backgroundColor: item.bg, color: item.color }}
+                >
+                  <item.icon size={26} strokeWidth={2.5} />
+                </div>
+                <div className="text-[11px] font-black uppercase tracking-widest text-slate-300">
+                  {item.step}
+                </div>
+              </div>
+
+              <h3 className="font-display font-extrabold text-xl lg:text-2xl text-gray-900 mb-3 tracking-tight">
+                {item.title}
+              </h3>
+              
+              <p className="text-slate-500 mb-6 leading-relaxed">
+                {item.desc}
+              </p>
+
+              <div className="mt-auto inline-flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-xl w-full border border-slate-100 text-sm font-semibold text-slate-600">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                {item.highlight}
+              </div>
             </div>
-            <p className="text-white text-left max-w-sm">
-              <span className="font-black block text-sm uppercase tracking-widest text-[#F97316] mb-1">Ultra-Speed Mode</span>
-              <span className="text-[0.9375rem] font-medium text-white/50 leading-relaxed">Most bookings are confirmed within <span className="text-white">60 seconds</span>. Try it now.</span>
-            </p>
-            <a href="tel:+919849000000" className="btn-primary h-12 !px-8 text-sm">
-              Call Now
-            </a>
-          </div>
-        </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,129 +1,85 @@
-import { FadeIn } from "./fade-in";
-import { ShieldCheck, Clock, CheckCircle, BadgeCheck, Zap, Sparkles, Phone, Award } from "lucide-react";
-
-const stats = [
-  { label: "Happy Customers", value: "5,000+", icon: Award, color: "#F97316" },
-  { label: "Years Experience", value: "10+", icon: ShieldCheck, color: "#60A5FA" },
-  { label: "Response Time", value: "2-4 hrs", icon: Clock, color: "#FBBF24" },
-  { label: "Service Warranty", value: "30 Days", icon: BadgeCheck, color: "#10B981" },
-];
-
-const features = [
-  {
-    title: "Certified Experts",
-    description: "Every technician is background-verified and professionally trained for all major gas appliance brands.",
-    icon: CheckCircle,
-    type: "glass-light",
-    accent: "#F97316",
-  },
-  {
-    title: "Safety First Protocol",
-    description: "Multi-point safety checks performed after every repair to ensure zero leakage and total peace of mind.",
-    icon: ShieldCheck,
-    type: "grad-border",
-    accent: "#60A5FA",
-  },
-  {
-    title: "Transparent Pricing",
-    description: "No hidden charges. Get a clear estimate before the work begins. Pay only for what you see.",
-    icon: Zap,
-    type: "minimal",
-    accent: "#FB923C",
-  },
-];
+import { CheckCircle2, ShieldCheck, Zap, ArrowRight, Award } from "lucide-react";
 
 export function WhyChooseUs() {
-  return (
-    <section className="relative overflow-hidden pt-36 pb-40 bg-white rounded-t-[60px] -mt-10 shadow-[0_-30px_60px_rgba(0,0,0,0.4)]">
-      {/* Background Ornaments */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-slate-50 to-transparent opacity-50" />
-        <div className="absolute inset-0 mesh-dots opacity-[0.03]" />
-      </div>
+  const features = [
+    { title: "10+ Years Experience", icon: Award },
+    { title: "ID-Verified Technicians", icon: ShieldCheck },
+    { title: "Zero Leakage Guaranteed", icon: CheckCircle2 },
+    { title: "Same Day Output", icon: Zap },
+  ];
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Statistics Strip (Now on Top for High Contrast) */}
-        <FadeIn className="mb-32">
-          <div 
-            className="rounded-[40px] overflow-hidden grad-border shadow-[0_45px_100px_rgba(0,0,0,0.12)] relative"
-            style={{ 
-              background: "linear-gradient(135deg, #0A0F26 0%, #05091A 100%)",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
-            <div className="relative divide-y divide-white/5 lg:divide-y-0 lg:divide-x lg:divide-white/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-              {stats.map((stat, i) => (
-                <div 
-                  key={i} 
-                  className="px-12 py-14 flex flex-col items-center lg:items-start transition-all duration-400 group hover:bg-white/[0.04]"
-                >
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 bg-white/5 shadow-xl transition-all group-hover:scale-110 group-hover:rotate-6">
-                    <stat.icon style={{ width: 28, height: 28, color: stat.color }} />
+  return (
+    <section className="section-padding bg-[#fcfdfe] relative overflow-hidden">
+      
+      {/* Soft glowing background element (Reference depth style) */}
+      <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-50/70 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          
+          {/* ── Left Side: Prominent Image (like AC unit in reference) ── */}
+          <div className="w-full lg:w-1/2 relative flex justify-center">
+            {/* Soft backdrop glow to ground the image */}
+            <div className="absolute bottom-0 w-[80%] h-12 bg-gray-900/10 rounded-[100%] blur-xl translate-y-6" />
+            
+            <div className="relative w-full max-w-[500px]">
+              <img 
+                src="https://images.unsplash.com/photo-1542060748-10c28b62716f?auto=format&fit=crop&q=80&w=800&h=800" 
+                alt="Safe Gas Appliance Servicing"
+                className="w-full rounded-[2.5rem] shadow-premium object-cover border-[6px] border-white z-10 relative"
+                style={{ height: "540px" }}
+              />
+
+              {/* Decorative elements representing airflow/energy (Reference design) */}
+              <div className="absolute -top-12 -left-12 w-32 h-32 hidden md:block opacity-60 pointer-events-none z-0">
+                <svg viewBox="0 0 100 100" className="text-orange-400 stroke-current drop-shadow-lg" fill="none" strokeWidth="3" strokeLinecap="round">
+                  <path d="M10,80 C30,40 50,40 90,20" />
+                  <path d="M80,10 L95,15 L90,30" />
+                </svg>
+              </div>
+
+              <div className="absolute -bottom-8 -right-8 w-40 h-40 hidden md:block opacity-70 pointer-events-none z-20">
+                <svg viewBox="0 0 100 100" className="text-blue-500 stroke-current drop-shadow-md" fill="none" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M20,80 C50,90 70,70 80,20" />
+                  <path d="M65,30 L80,15 L95,30" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Right Side: Text & Actions ── */}
+          <div className="w-full lg:w-1/2">
+            <h2 className="font-display font-black text-gray-900 leading-[1.1] tracking-tight mb-6" style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}>
+              Safety is Our <span className="text-gradient-orange">Religion</span> Today
+            </h2>
+            
+            <p className="text-lg text-slate-500 leading-relaxed max-w-lg mb-8">
+              Every technician carries a multi-point safety checklist. Before leaving, we verify zero leakage using certified pressure testing equipment. Your family's safety is non-negotiable.
+            </p>
+
+            {/* Feature List */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
+              {features.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full flex flex-shrink-0 items-center justify-center bg-blue-50 text-blue-600">
+                    <item.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-5xl font-black text-white mb-3 tracking-tighter shimmer-text">
-                    {stat.value}
-                  </h3>
-                  <p className="text-white/30 font-black uppercase tracking-[0.2em] text-[10px]">
-                    {stat.label}
-                  </p>
+                  <span className="font-bold text-gray-800 tracking-tight text-[15px]">{item.title}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </FadeIn>
 
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row items-end gap-12 mb-24">
-          <FadeIn className="lg:max-w-2xl">
-            <h2 
-              className="text-[#060B1E] font-display font-black tracking-tighter mb-8"
-              style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: 0.95 }}
+            {/* Solid Red/Orange Button matching reference */}
+            <a 
+              href="https://wa.me/919849000000" 
+              className="btn-orange !py-4 !px-10 inline-flex group"
             >
-              Why Hyderabad <br />
-              <span className="shimmer-text">Trusts Us.</span>
-            </h2>
-          </FadeIn>
-          <FadeIn className="lg:max-w-md ml-auto" delay={0.1}>
-            <p className="text-slate-500 font-bold leading-relaxed text-xl border-l-[6px] border-[#F97316] pl-10">
-              "We provide industrial-grade reliability to the home kitchen, ensuring safety with an elite finish."
-            </p>
-          </FadeIn>
-        </div>
+              Book An Expert
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
+            
+          </div>
 
-        {/* Feature Grid with Variety Card Styles */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {features.map((feature, i) => (
-            <FadeIn key={i} delay={i * 0.1}>
-              <div 
-                className={`h-full min-h-[440px] p-12 rounded-[48px] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] group relative overflow-hidden flex flex-col ${
-                  feature.type === 'glass-light' ? 'glass-light shadow-2xl border-white' : 
-                  feature.type === 'grad-border' ? 'grad-border bg-white shadow-xl' : 
-                  'bg-slate-50 border border-slate-100'
-                }`}
-              >
-                {/* Surface Mesh */}
-                <div className="absolute inset-0 mesh-dots opacity-[0.03] group-hover:opacity-[0.06] pointer-events-none" />
-                
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-12 bg-white shadow-lg transition-all group-hover:scale-110 group-hover:rotate-6">
-                  <feature.icon style={{ width: 32, height: 32, color: feature.accent }} />
-                </div>
-                
-                <h3 className="text-2xl font-black text-[#040816] mb-6 tracking-tight leading-tight transition-colors group-hover:text-[#F97316]">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-slate-500 font-bold leading-relaxed mb-10 flex-1">
-                  {feature.description}
-                </p>
-
-                <div className="mt-auto flex items-center gap-3">
-                   <div className="h-1 w-12 rounded-full bg-[#F97316] opacity-30 group-hover:w-24 group-hover:opacity-100 transition-all duration-500" />
-                   <Sparkles className="w-5 h-5 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            </FadeIn>
-          ))}
         </div>
       </div>
     </section>

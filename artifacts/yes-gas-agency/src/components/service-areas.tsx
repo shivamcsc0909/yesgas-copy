@@ -1,96 +1,104 @@
-import { MapPin, Phone, Sparkles, Navigation } from "lucide-react";
-import { FadeIn } from "./fade-in";
+import { MapPin, Phone } from "lucide-react";
 
-const areas = [
-  "Madhapur", "Gachibowli", "Kondapur", "Kukatpally", "Jubilee Hills",
-  "Banjara Hills", "Secunderabad", "Ameerpet", "Hitech City", "Miyapur",
-  "Begumpet", "LB Nagar", "Dilsukhnagar", "Mehdipatnam", "Uppal",
-  "Alwal", "Kompally", "Bachupally", "Manikonda", "Tolichowki",
-  "Attapur", "Habsiguda", "ECIL", "Malkajgiri", "Sanath Nagar",
-  "Erragadda", "Bowenpally", "Tarnaka", "Amberpet", "Nacharam",
+const featuredAreas = [
+  "Madhapur", "Gachibowli", "Kondapur", "Kukatpally",
+  "Jubilee Hills", "Banjara Hills", "Hitech City", "Ameerpet",
 ];
 
-const mainAreas = areas.slice(0, 6);
-const otherAreas = areas.slice(6);
+const otherAreas = [
+  "Secunderabad", "Miyapur", "Begumpet", "LB Nagar", "Dilsukhnagar",
+  "Mehdipatnam", "Uppal", "Alwal", "Kompally", "Bachupally",
+  "Manikonda", "Tolichowki", "Attapur", "Habsiguda", "ECIL",
+  "Malkajgiri", "Sanath Nagar", "Erragadda", "Bowenpally",
+  "Tarnaka", "Amberpet", "Nacharam",
+];
 
 export function ServiceAreas() {
   return (
-    <section 
-      className="relative py-32 overflow-hidden bg-white"
+    <section
+      id="areas"
+      className="py-24"
+      style={{ background: "#f8fafc" }}
     >
-      {/* Background System */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 mesh-grid-light opacity-50" />
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#05091A] to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px]" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 65%)" }} />
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-24">
-          <div className="section-label mb-6" style={{ margin: "0 auto 20px" }}>Wide Coverage</div>
-          <h2 
-            className="text-[#060B1E] font-display font-extrabold tracking-tighter"
-            style={{ fontSize: "clamp(2.8rem, 5vw, 4rem)", lineHeight: 1.1 }}
-          >
-            Serving All of <br />
-            <span className="shimmer-text">Hyderabad.</span>
+        <div className="text-center mb-12">
+          <div className="section-badge mx-auto mb-4">Service Coverage</div>
+          <h2 className="font-display font-black text-gray-900 mb-4" style={{ fontSize: "clamp(1.9rem, 4vw, 2.9rem)" }}>
+            We Serve All of{" "}
+            <span className="text-gradient-orange">Hyderabad</span>
           </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium mt-6">
-            Our expert technicians are stationed in localized clusters to reach you within <span className="text-[#F97316] font-black">2–4 hours</span>, guaranteed.
+          <p className="text-slate-500 text-lg max-w-xl mx-auto">
+            Technicians stationed across the city to reach you in <strong className="text-gray-700">2–4 hours</strong>.
           </p>
-        </FadeIn>
-
-        {/* Featured Areas (Main Pills) */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {mainAreas.map((area, i) => (
-            <FadeIn key={i} delay={i * 0.05}>
-              <div 
-                className="group flex items-center gap-3 rounded-full px-6 py-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:scale-105 cursor-default relative overflow-hidden"
-                style={{ 
-                  background: 'rgba(249,115,22,0.08)', 
-                  border: '1px solid rgba(249,115,22,0.22)',
-                  color: '#C2560A'
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Navigation className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                <span className="font-black text-sm tracking-tight">{area}</span>
-              </div>
-            </FadeIn>
-          ))}
         </div>
 
-        {/* Supporting Areas (Glass Pills) */}
-        <div className="flex flex-wrap justify-center gap-3 mb-24 max-w-5xl mx-auto">
-          {otherAreas.map((area, i) => (
-            <FadeIn key={i} delay={0.2 + i * 0.03}>
-              <div 
-                className="group flex items-center gap-2 rounded-full px-5 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:border-[#F97316]/30 cursor-default shadow-sm"
-                style={{ 
-                  background: 'rgba(255,255,255,0.7)', 
-                  border: '1px solid rgba(0,0,0,0.08)',
-                  color: '#475569'
+        {/* Featured areas — larger pills with icon */}
+        <div className="mb-6">
+          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 text-center">
+            🔥 High-Demand Areas
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {featuredAreas.map((area, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-default"
+                style={{
+                  background: "#fff7ed",
+                  border: "1.5px solid #fbbf7d",
+                  color: "#92400e",
+                  boxShadow: "0 2px 8px rgba(249,115,22,0.1)",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = "#F97316";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = "#fff7ed";
+                  (e.currentTarget as HTMLElement).style.color = "#92400e";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
-                <div className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-[#F97316] transition-colors" />
-                <span className="font-bold text-xs tracking-wide">{area}</span>
+                <MapPin style={{ width: 13, height: 13, flexShrink: 0 }} />
+                {area}
               </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        {/* Call to Action Bar */}
-        <FadeIn className="text-center" delay={0.5}>
-          <div className="inline-flex flex-col items-center gap-6">
-            <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[0.7rem]">
-              Technicians stationed nearby ready to go.
-            </p>
-            <a href="tel:+919849000000" className="btn-primary group h-14 !px-12 text-base">
-              <Phone className="w-5 h-5 flex-shrink-0" />
-              Check Availability → +91 98490 00000
-            </a>
+            ))}
           </div>
-        </FadeIn>
+        </div>
+
+        {/* Other areas — smaller neutral pills */}
+        <div className="mb-12">
+          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 text-center">
+            Also Covered
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {otherAreas.map((area, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm text-gray-600 font-medium cursor-default transition-all duration-150 hover:bg-white hover:shadow-sm"
+                style={{
+                  background: "#f1f5f9",
+                  border: "1px solid #e2e8f0",
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0" />
+                {area}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <p className="text-gray-400 text-sm mb-5 font-medium">
+            Don't see your area? Call us — we likely cover it!
+          </p>
+          <a href="tel:+919849000000" className="btn-orange !text-base">
+            <Phone className="w-5 h-5" />
+            Check My Area Availability
+          </a>
+        </div>
       </div>
     </section>
   );
