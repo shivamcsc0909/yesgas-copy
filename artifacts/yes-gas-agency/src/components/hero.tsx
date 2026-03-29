@@ -1,6 +1,57 @@
+import { useEffect, useState } from "react";
 import { Clock, Users, Star } from "lucide-react";
 
+function useTypewriter(text: string, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 1800, pauseAfterDelete = 500) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    let deleting = false;
+    let timer: ReturnType<typeof setTimeout>;
+
+    function tick() {
+      if (!deleting) {
+        // Typing
+        i++;
+        setDisplayed(text.slice(0, i));
+        setDone(false);
+        if (i >= text.length) {
+          // Finished typing — pause then start deleting
+          setDone(true);
+          timer = setTimeout(() => {
+            deleting = true;
+            setDone(false);
+            timer = setTimeout(tick, deleteSpeed);
+          }, pauseAfterType);
+        } else {
+          timer = setTimeout(tick, typeSpeed);
+        }
+      } else {
+        // Deleting
+        i--;
+        setDisplayed(text.slice(0, i));
+        if (i <= 0) {
+          // Finished deleting — pause then start typing again
+          deleting = false;
+          timer = setTimeout(tick, pauseAfterDelete);
+        } else {
+          timer = setTimeout(tick, deleteSpeed);
+        }
+      }
+    }
+
+    // Initial delay before first type
+    timer = setTimeout(tick, 800);
+    return () => clearTimeout(timer);
+  }, [text, typeSpeed, deleteSpeed, pauseAfterType, pauseAfterDelete]);
+
+  return { displayed, done };
+}
+
 export function Hero() {
+  const { displayed, done } = useTypewriter("We Fix It Today.", 120, 25, 1800, 500);
+
   return (
     <div className="relative">
       {/* ── Main Hero Section ── */}
@@ -53,7 +104,21 @@ export function Hero() {
               Your Gas Stove —
               <br />
               <span style={{ color: "#fb923c", textShadow: "0 3px 20px rgba(0,0,0,0.7)" }}>
-                We Fix It Today.
+                {displayed}
+                {/* Blinking cursor — steady when done typing, blinks while typing/deleting */}
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "3px",
+                    height: "0.85em",
+                    background: "#fb923c",
+                    marginLeft: "3px",
+                    verticalAlign: "middle",
+                    borderRadius: "2px",
+                    animation: done ? "none" : "blink 0.65s step-end infinite",
+                    opacity: 1,
+                  }}
+                />
               </span>
             </h1>
 
