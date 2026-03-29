@@ -17,14 +17,14 @@ export function ServiceAreas() {
   return (
     <section
       id="areas"
-      className="py-24"
+      className="py-10 lg:py-14"
       style={{ background: "#f8fafc" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <div className="section-badge mx-auto mb-4">Service Coverage</div>
-          <h2 className="font-display font-black text-gray-900 mb-4" style={{ fontSize: "clamp(1.9rem, 4vw, 2.9rem)" }}>
+          <h2 className="font-black text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
             We Serve All of{" "}
             <span className="text-gradient-orange">Hyderabad</span>
           </h2>
@@ -34,8 +34,8 @@ export function ServiceAreas() {
         </div>
 
         {/* Featured areas — larger pills with icon */}
-        <div className="mb-6">
-          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 text-center">
+        <div className="mb-4">
+          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 text-center">
             🔥 High-Demand Areas
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -68,8 +68,8 @@ export function ServiceAreas() {
         </div>
 
         {/* Other areas — smaller neutral pills */}
-        <div className="mb-12">
-          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 text-center">
+        <div className="mb-8">
+          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 text-center">
             Also Covered
           </p>
           <div className="flex flex-wrap justify-center gap-2">

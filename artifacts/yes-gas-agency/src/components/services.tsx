@@ -29,7 +29,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="section-padding bg-white relative">
+    <section id="services" className="py-10 lg:py-14 bg-white relative">
       
       {/* Decorative background clouds / elements */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50/50 to-transparent pointer-events-none" />
@@ -37,12 +37,12 @@ export function Services() {
       <div className="absolute -right-40 bottom-20 w-96 h-96 bg-orange-50/60 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <p className="font-bold text-orange-600 tracking-wider uppercase text-sm mb-4">Our Services</p>
-          <h2 className="font-display font-black text-gray-900 leading-tight tracking-tight" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="section-badge mx-auto mb-4">Our Services</div>
+          <h2 className="font-black text-gray-900 leading-tight tracking-tight" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}>
             Book Your Gas Expert Today!
           </h2>
-          <p className="mt-5 text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-3 text-base text-gray-500 leading-relaxed max-w-2xl mx-auto">
             From routine repair to emergency leaks, our certified technicians handle it all with complete safety guarantees.
           </p>
         </div>
@@ -92,7 +92,7 @@ export function Services() {
         </div>
 
         {/* Bottom CTA for Services */}
-        <div className="mt-20 block text-center">
+        <div className="mt-8 block text-center">
             <a 
               href="tel:+919849000000" 
               className="inline-flex items-center gap-2 font-bold text-lg text-gray-900 hover:text-orange-600 transition-colors group"

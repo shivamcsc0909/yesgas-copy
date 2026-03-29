@@ -32,15 +32,15 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-padding bg-[#f4f7fb] border-y border-slate-100">
+    <section id="how-it-works" className="py-10 lg:py-14 bg-[#f4f7fb] border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header matching reference block-center styling */}
-        <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/50 text-orange-700 font-bold text-sm uppercase tracking-widest mb-4">
             How It Works
           </div>
-          <h2 className="font-display font-black text-gray-900 leading-tight tracking-tight mb-5" style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}>
+          <h2 className="font-black text-gray-900 leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
             Fixed in <span className="text-gradient-orange">3 Simple Steps</span>
           </h2>
           <p className="text-lg text-slate-500">
@@ -53,7 +53,7 @@ export function HowItWorks() {
           {steps.map((item, idx) => (
             <div 
               key={idx} 
-              className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-premium transition-transform hover:-translate-y-2 relative overflow-hidden group"
+              className="bg-white rounded-2xl p-6 shadow-premium transition-transform hover:-translate-y-1 relative overflow-hidden group"
             >
               {/* Subtle top border accent matching the step color */}
               <div 
@@ -61,7 +61,7 @@ export function HowItWorks() {
                 style={{ backgroundColor: item.color }} 
               />
               
-              <div className="flex justify-between items-start mb-8">
+              <div className="flex justify-between items-start mb-5">
                 <div 
                   className="w-14 h-14 rounded-2xl flex items-center justify-center transform transition-transform group-hover:scale-110 group-hover:rotate-3"
                   style={{ backgroundColor: item.bg, color: item.color }}
@@ -77,7 +77,7 @@ export function HowItWorks() {
                 {item.title}
               </h3>
               
-              <p className="text-slate-500 mb-6 leading-relaxed">
+              <p className="text-slate-500 mb-4 leading-relaxed text-sm">
                 {item.desc}
               </p>
 

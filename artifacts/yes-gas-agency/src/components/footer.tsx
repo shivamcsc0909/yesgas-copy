@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <footer 
-      className="relative text-blue-50 pt-20 pb-8 mt-10 overflow-hidden"
+      className="relative text-blue-50 pt-10 pb-6 overflow-hidden"
       style={{
         background: `linear-gradient(rgba(10, 15, 30, 0.75), rgba(10, 15, 30, 0.85)), url("https://images.unsplash.com/photo-1629234358103-5b5ee53ece9c?auto=format&fit=crop&q=80&w=1400")`,
         backgroundSize: "cover",
@@ -28,7 +28,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 mb-8">
           
           {/* Brand Info */}
           <div className="lg:col-span-1">
@@ -115,7 +115,7 @@ export function Footer() {
 
         </div>
 
-        <div className="pt-8 mt-12 border-t border-blue-800/60 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-5 mt-6 border-t border-blue-800/60 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm font-medium text-blue-300">
             © {currentYear} Yes Gas Agency. All rights reserved.
           </p>

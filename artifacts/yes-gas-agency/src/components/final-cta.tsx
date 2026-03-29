@@ -8,11 +8,11 @@ const WA_ICON = (
 
 export function FinalCTA() {
   return (
-    <section className="bg-white py-10 lg:py-16 relative z-10">
+    <section className="bg-white py-8 lg:py-10 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div 
-          className="rounded-[3rem] px-8 py-16 lg:px-20 lg:py-24 relative overflow-hidden flex flex-col items-center text-center shadow-premium-hover transform transition-transform duration-500 hover:scale-[1.01]"
+          className="rounded-[2rem] px-8 py-12 lg:px-16 lg:py-16 relative overflow-hidden flex flex-col items-center text-center shadow-premium-hover transform transition-transform duration-500 hover:scale-[1.01]"
           style={{
             background: "linear-gradient(135deg, #0284c7 0%, #1e40af 40%, #e11d48 75%, #ea580c 100%)",
           }}

@@ -29,15 +29,15 @@ export function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="py-16 lg:py-20 bg-[#f4f7fb]">
+    <section id="faq" className="py-10 lg:py-14 bg-[#f4f7fb]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
           
           <div className="w-full lg:w-1/3">
-            <div className="inline-flex items-center justify-center p-4 bg-orange-100/50 rounded-full mb-6 text-orange-600">
+            <div className="inline-flex items-center justify-center p-3 bg-orange-100/50 rounded-full mb-4 text-orange-600">
                <MessageCircle className="w-8 h-8" />
             </div>
-            <h2 className="font-display font-black text-gray-900 leading-tight mb-5" style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}>
+            <h2 className="font-black text-gray-900 leading-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.4rem)" }}>
               Frequently Asked <span className="text-gradient-orange">Questions</span>
             </h2>
             <p className="text-base text-slate-500 mb-5 leading-relaxed">
@@ -64,7 +64,7 @@ export function FAQ() {
                   }`}
                   onClick={() => setOpen(isOpen ? -1 : i)}
                 >
-                  <div className="w-full px-8 py-6 flex items-center justify-between gap-4">
+                  <div className="w-full px-6 py-4 flex items-center justify-between gap-4">
                     <h3 className={`font-bold text-lg text-left transition-colors ${isOpen ? 'text-orange-600' : 'text-gray-900'}`}>
                       {faq.q}
                     </h3>
@@ -79,7 +79,7 @@ export function FAQ() {
                     className="overflow-hidden transition-all duration-300 ease-in-out"
                     style={{ maxHeight: isOpen ? "200px" : "0", opacity: isOpen ? 1 : 0 }}
                   >
-                    <div className="px-8 pb-6 text-slate-500 leading-relaxed text-[15px] border-t border-slate-50 pt-4 mt-2 mx-4">
+                    <div className="px-6 pb-4 text-slate-500 leading-relaxed text-[14px] border-t border-slate-50 pt-3 mt-1 mx-3">
                       {faq.a}
                     </div>
                   </div>

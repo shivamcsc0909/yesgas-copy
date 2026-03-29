@@ -27,12 +27,12 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="section-padding bg-[#fdfcfe] relative">
+    <section id="testimonials" className="py-10 lg:py-14 bg-[#fdfcfe] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <p className="font-bold text-orange-600 tracking-wider uppercase text-sm mb-4">Customer Reviews</p>
-          <h2 className="font-display font-black text-gray-900 leading-[1.15] tracking-tight mb-5" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="section-badge mx-auto mb-4">Customer Reviews</div>
+          <h2 className="font-black text-gray-900 leading-[1.15] tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>
             Trusted by 5,000+ Families in Hyderabad
           </h2>
           <div className="flex items-center justify-center gap-3">
@@ -50,19 +50,19 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <div 
               key={i} 
-              className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-50 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full"
+              className="bg-white rounded-2xl p-6 shadow-premium border border-slate-50 transition-transform duration-300 hover:-translate-y-1 flex flex-col h-full"
             >
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-4">
                 {[...Array(t.rating)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-orange-400 text-orange-400" />
                 ))}
               </div>
               
-              <blockquote className="text-slate-600 text-[15px] leading-relaxed mb-8 flex-1">
+              <blockquote className="text-slate-600 text-[14px] leading-relaxed mb-5 flex-1">
                 "{t.text}"
               </blockquote>
               
-              <div className="flex items-center justify-between border-t border-slate-100 pt-6 mt-auto">
+              <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold title-font text-lg">
                     {t.name.charAt(0)}
