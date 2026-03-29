@@ -20,7 +20,7 @@ export function WhyChooseUs() {
             <div className="absolute bottom-0 w-[80%] h-10 bg-gray-900/10 rounded-[100%] blur-xl translate-y-5" />
             <div className="relative w-full max-w-[460px]">
               <img
-                src="https://images.unsplash.com/photo-1771122453274-d3270e73cf94?auto=format&fit=crop&q=80&w=800&h=700"
+                src="/technician.png"
                 alt="Safe Gas Appliance Servicing"
                 className="w-full rounded-[2rem] object-cover border-[5px] border-white relative z-10"
                 style={{ height: "380px", boxShadow: "0 24px 60px rgba(0,0,0,0.12)" }}

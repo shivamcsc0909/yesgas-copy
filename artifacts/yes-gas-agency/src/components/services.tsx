@@ -5,25 +5,25 @@ const services = [
     title: "Gas Stove Repair",
     detail: "All Brands • 30 Day Warranty",
     icon: Wrench,
-    image: "https://images.unsplash.com/photo-1607324772107-8ad6740ca195?auto=format&fit=crop&q=80&w=800&h=500",
+    image: "/service-stove-repair.png",
   },
   {
     title: "Deep Burner Cleaning",
     detail: "Blue Flame • Carbon Removal",
     icon: Flame,
-    image: "https://images.unsplash.com/photo-1595166986545-bf6dacb22b4e?auto=format&fit=crop&q=80&w=800&h=500",
+    image: "/service-burner-cleaning.png",
   },
   {
     title: "Pipeline Installation",
     detail: "Safety Tested • New Fittings",
     icon: ShieldCheck,
-    image: "https://images.unsplash.com/photo-1654440122140-f1fc995ddb34?auto=format&fit=crop&q=80&w=800&h=500",
+    image: "/service-pipeline.png",
   },
   {
     title: "Emergency Gas Leak",
     detail: "24/7 Response • 60 Min Arrival",
     icon: ShieldAlert,
-    image: "https://images.unsplash.com/photo-1629234358103-5b5ee53ece9c?auto=format&fit=crop&q=80&w=800&h=500",
+    image: "/service-gas-leak.png",
   },
 ];
 
