@@ -5,8 +5,8 @@ import { Services } from "../components/services";
 import { HowItWorks } from "../components/how-it-works";
 import { Testimonials } from "../components/testimonials";
 import { ServiceAreas } from "../components/service-areas";
-import { Faq } from "../components/faq";
-import { FinalCta } from "../components/final-cta";
+import { FAQ } from "../components/faq";
+import { FinalCTA } from "../components/final-cta";
 import { Footer } from "../components/footer";
 import { WhatsAppButton } from "../components/whatsapp-button";
 
@@ -20,8 +20,8 @@ export default function Landing() {
       <HowItWorks />
       <Testimonials />
       <ServiceAreas />
-      <Faq />
-      <FinalCta />
+      <FAQ />
+      <FinalCTA />
       <Footer />
       <WhatsAppButton />
     </main>

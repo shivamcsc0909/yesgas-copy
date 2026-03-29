@@ -29,7 +29,7 @@ export function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="section-padding bg-[#f4f7fb]">
+    <section id="faq" className="py-16 lg:py-20 bg-[#f4f7fb]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
           
@@ -40,12 +40,12 @@ export function FAQ() {
             <h2 className="font-display font-black text-gray-900 leading-tight mb-5" style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)" }}>
               Frequently Asked <span className="text-gradient-orange">Questions</span>
             </h2>
-            <p className="text-lg text-slate-500 mb-8 leading-relaxed">
+            <p className="text-base text-slate-500 mb-5 leading-relaxed">
               Have a question about our repair process, pricing, or safety standards? Find practical answers here.
             </p>
-            <a 
-              href="https://wa.me/919849000000" 
-              className="btn-outline !py-3.5 !px-8 hover:!border-orange-500 hover:!text-orange-600"
+            <a
+              href="https://wa.me/919849000000"
+              className="btn-outline !py-3 !px-7 hover:!border-orange-500 hover:!text-orange-600"
             >
               Ask on WhatsApp
             </a>

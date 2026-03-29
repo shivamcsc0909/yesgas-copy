@@ -96,6 +96,35 @@
     box-shadow: 0 12px 28px rgba(0,0,0,0.12);
   }
 
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    border: 2px solid #334155;
+    color: #334155;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    border-color: #f97316;
+    color: #f97316;
+    transform: translateY(-2px);
+  }
+
+  .shadow-premium-hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* Padding utilities for big sections */
   .section-padding {
     padding-top: 6rem;

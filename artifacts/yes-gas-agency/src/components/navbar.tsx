@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Flame, Phone, Menu, X } from "lucide-react";
+import { Flame, Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -26,130 +26,91 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className="flex justify-center w-full z-50 fixed top-0 pointer-events-none">
+    <div className="absolute top-0 left-0 right-0 w-full z-50 flex justify-center pt-5 px-4">
       <header
-        className={`transition-all duration-300 pointer-events-auto ${
-          scrolled
-            ? "w-full rounded-none md:mt-0"
-            : "w-[calc(100%-2rem)] max-w-7xl md:mt-5 rounded-full"
+        className={`w-full max-w-6xl transition-all duration-300 bg-white rounded-full flex items-center justify-between px-5 py-2.5 relative ${
+          scrolled ? "shadow-lg bg-white/95 backdrop-blur-md translate-y-2" : "shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-white"
         }`}
-        style={
-          scrolled
-            ? {
-                background: "rgba(255, 255, 255, 0.98)",
-                backdropFilter: "blur(20px)",
-                borderBottom: "1px solid rgba(0,0,0,0.05)",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-                padding: "12px 0",
-              }
-            : {
-                background: "rgba(255, 255, 255, 0.95)",
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                padding: "8px 24px",
-                marginTop: "16px"
-              }
-        }
       >
-        <div className="w-full mx-auto px-4 flex items-center justify-between" style={scrolled ? { maxWidth: "1280px" } : {}}>
-          
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div
-              className="w-10 h-10 rounded-[14px] flex items-center justify-center transition-transform group-hover:scale-105"
-              style={{
-                background: "linear-gradient(135deg, #F97316, #ea580c)",
-                boxShadow: "0 4px 12px rgba(249,115,22,0.3)",
-              }}
-            >
-              <Flame className="w-5 h-5 text-white fill-white" />
-            </div>
-            <div>
-              <p className="font-display font-black text-gray-900 text-[17px] leading-none tracking-tight">Yes Gas</p>
-              <p className="text-[10px] font-bold tracking-[0.2em] uppercase leading-none mt-1" style={{ color: "#F97316" }}>Agency</p>
-            </div>
-          </a>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-4 py-2 text-[15px] font-semibold text-slate-600 rounded-full hover:text-orange-600 hover:bg-orange-50 transition-all duration-200"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Right CTAs */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="https://wa.me/919849000000"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-whatsapp !py-2.5 !px-5 !text-[15px]"
-              style={{ padding: "10px 20px", borderRadius: "99px" }}
-            >
-              {WA_ICON}
-              WhatsApp
-            </a>
-            <a 
-              href="tel:+919849000000" 
-              className="btn-orange !py-2.5 !px-6 !text-[15px]"
-              style={{ padding: "10px 24px", borderRadius: "99px" }}
-            >
-              Call Now
-            </a>
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden w-11 h-11 rounded-full flex items-center justify-center bg-slate-50 text-slate-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle Menu"
+        {/* Logo — left */}
+        <a href="#" className="flex items-center gap-2.5 flex-shrink-0 group">
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center transition-transform group-hover:scale-105"
+            style={{ background: "linear-gradient(135deg, #0ea5e9, #f97316)" }}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            <Flame className="w-4 h-4 text-white fill-white" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-black text-[17px] text-gray-900 tracking-tight">Yes Gas</span>
+            <span className="text-[9px] font-bold tracking-[0.12em] text-orange-500 uppercase mt-0.5">Agency</span>
+          </div>
+        </a>
+
+        {/* Nav links — absolute center */}
+        <nav className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-[15px] font-semibold text-gray-600 hover:text-orange-500 transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Right CTAs */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://wa.me/919849000000"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-[14px] font-bold text-green-600 bg-green-50 border border-green-100 hover:bg-green-100 rounded-full transition-all"
+          >
+            {WA_ICON}
+            WhatsApp
+          </a>
+          <a
+            href="tel:+919849000000"
+            className="flex items-center gap-2 px-6 py-2 text-[14px] font-bold text-white bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 shadow-md hover:shadow-lg rounded-full transition-all"
+          >
+            <Phone className="w-4 h-4" />
+            Call Now
+          </a>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className="md:hidden overflow-hidden transition-all duration-300 absolute left-0 right-0"
-          style={{
-            top: "100%",
-            marginTop: "12px",
-            maxHeight: mobileOpen ? "400px" : "0",
-            background: "rgba(255,255,255,0.98)",
-            backdropFilter: "blur(16px)",
-            borderRadius: "24px",
-            boxShadow: mobileOpen ? "0 20px 40px rgba(0,0,0,0.15)" : "none",
-            border: mobileOpen ? "1px solid rgba(0,0,0,0.05)" : "none",
-            opacity: mobileOpen ? 1 : 0
-          }}
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden text-gray-900 focus:outline-none p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle Menu"
         >
-          <div className="p-4 flex flex-col gap-1">
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Mobile Menu */}
+        {mobileOpen && (
+          <div className="absolute top-full left-0 right-0 mt-4 bg-white rounded-3xl p-6 shadow-2xl border border-gray-100 flex flex-col gap-4 lg:hidden">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-5 py-3.5 rounded-2xl font-bold text-slate-700 hover:bg-orange-50 hover:text-orange-600 transition-colors text-[15px]"
+                className="text-lg font-bold text-gray-800 hover:text-orange-500"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.name}
               </a>
             ))}
-            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-slate-100 px-1">
-              <a href="tel:+919849000000" className="btn-orange justify-center !py-3.5">
-                <Phone className="w-5 h-5 mr-1" /> Call +91 98490 00000
+            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-100">
+              <a href="tel:+919849000000" className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-gradient-to-r from-orange-400 to-red-500 rounded-full">
+                <Phone className="w-5 h-5" /> Call +91 98490 00000
               </a>
-              <a href="https://wa.me/919849000000" className="btn-whatsapp justify-center !py-3.5 mt-1">
+              <a href="https://wa.me/919849000000" className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-green-600 bg-green-50 rounded-full border border-green-200">
                 {WA_ICON} Book on WhatsApp
               </a>
             </div>
           </div>
-        </div>
+        )}
       </header>
     </div>
   );
