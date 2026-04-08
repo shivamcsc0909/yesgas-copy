@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { Flame, Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import { SITE_CONFIG } from "@/config";
+
+import { Link, useLocation } from "wouter";
 
 const navLinks = [
-  { name: "Services", href: "#services" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Reviews", href: "#testimonials" },
-  { name: "Areas", href: "#areas" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const WA_ICON = (
@@ -18,6 +21,7 @@ const WA_ICON = (
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -33,46 +37,59 @@ export function Navbar() {
         }`}
       >
         {/* Logo — left */}
-        <a href="#" className="flex items-center gap-2.5 flex-shrink-0 group">
-          <div
-            className="w-9 h-9 rounded-full flex items-center justify-center transition-transform group-hover:scale-105"
-            style={{ background: "linear-gradient(135deg, #0ea5e9, #f97316)" }}
-          >
-            <Flame className="w-4 h-4 text-white fill-white" />
-          </div>
+        <Link
+          href="/"
+          className="flex items-center gap-2 flex-shrink-0 group"
+        >
+          <img
+            src="/logo.jpeg"
+            alt="Yes Gas Agency"
+            className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            style={{ mixBlendMode: "multiply" }}
+          />
           <div className="flex flex-col leading-none">
             <span className="font-black text-[17px] text-gray-900 tracking-tight">Yes Gas</span>
             <span className="text-[9px] font-bold tracking-[0.12em] text-orange-500 uppercase mt-0.5">Agency</span>
           </div>
-        </a>
+        </Link>
 
         {/* Nav links — absolute center */}
         <nav className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
-              className="text-[15px] font-semibold text-gray-600 hover:text-orange-500 transition-colors"
+              className={`text-[15px] font-semibold transition-colors ${
+                location === link.href ? "text-orange-500" : "text-gray-600 hover:text-orange-500"
+              }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* Right CTAs */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://wa.me/919849000000"
+            href={`https://wa.me/${SITE_CONFIG.whatsapp}`}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 px-4 py-2 text-[14px] font-bold text-green-600 bg-green-50 border border-green-100 hover:bg-green-100 rounded-full transition-all"
+            onClick={() => {
+              (window as any).dataLayer = (window as any).dataLayer || [];
+              (window as any).dataLayer.push({ event: "whatsapp_click", button_name: "WhatsApp", page: window.location.pathname });
+            }}
           >
             {WA_ICON}
             WhatsApp
           </a>
           <a
-            href="tel:+919849000000"
+            href={`tel:+${SITE_CONFIG.phoneRaw}`}
             className="flex items-center gap-2 px-6 py-2 text-[14px] font-bold text-white bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 shadow-md hover:shadow-lg rounded-full transition-all"
+            onClick={() => {
+              (window as any).dataLayer = (window as any).dataLayer || [];
+              (window as any).dataLayer.push({ event: "call_click", button_name: "Call Now", page: window.location.pathname });
+            }}
           >
             <Phone className="w-4 h-4" />
             Call Now
@@ -92,20 +109,36 @@ export function Navbar() {
         {mobileOpen && (
           <div className="absolute top-full left-0 right-0 mt-4 bg-white rounded-3xl p-6 shadow-2xl border border-gray-100 flex flex-col gap-4 lg:hidden">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-lg font-bold text-gray-800 hover:text-orange-500"
+                className={`text-lg font-bold ${
+                  location === link.href ? "text-orange-500" : "text-gray-800 hover:text-orange-500"
+                }`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-100">
-              <a href="tel:+919849000000" className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-gradient-to-r from-orange-400 to-red-500 rounded-full">
-                <Phone className="w-5 h-5" /> Call +91 98490 00000
+              <a
+                href={`tel:+${SITE_CONFIG.phoneRaw}`}
+                className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-gradient-to-r from-orange-400 to-red-500 rounded-full"
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "call_click", button_name: "Call Now", page: window.location.pathname });
+                }}
+              >
+                <Phone className="w-5 h-5" /> Call {SITE_CONFIG.phone}
               </a>
-              <a href="https://wa.me/919849000000" className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-green-600 bg-green-50 rounded-full border border-green-200">
+              <a
+                href={`https://wa.me/${SITE_CONFIG.whatsapp}`}
+                className="flex items-center justify-center gap-2 px-6 py-3 font-bold text-green-600 bg-green-50 rounded-full border border-green-200"
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "whatsapp_click", button_name: "WhatsApp", page: window.location.pathname });
+                }}
+              >
                 {WA_ICON} Book on WhatsApp
               </a>
             </div>

@@ -1,4 +1,5 @@
 import { PhoneCall, Truck, Wrench } from "lucide-react";
+import { useContent } from "../hooks/useContent";
 
 const steps = [
   {
@@ -31,6 +32,7 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const { content } = useContent();
   return (
     <section id="how-it-works" className="py-10 lg:py-14 bg-[#f4f7fb] border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -41,10 +43,10 @@ export function HowItWorks() {
             How It Works
           </div>
           <h2 className="font-black text-gray-900 leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
-            Fixed in <span className="text-gradient-orange">3 Simple Steps</span>
+            {content.how_it_works_title}
           </h2>
           <p className="text-lg text-slate-500">
-            From first call to working stove — the whole process is designed to be fast and hassle-free.
+            {content.how_it_works_subtitle}
           </p>
         </div>
 

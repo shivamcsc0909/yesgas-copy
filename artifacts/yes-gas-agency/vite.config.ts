@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
@@ -20,9 +21,21 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          motion: ["framer-motion"],
+        },
+      },
+    },
   },
   server: {
     port: 5173,
     host: "0.0.0.0",
+    proxy: {
+      '/api': 'http://localhost:8000',
+      '/admin': 'http://localhost:8000'
+    }
   },
 });

@@ -1,0 +1,18 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /admin/
+
+# Redirect bare /admin/ to login
+RewriteRule ^$ login.php [L]
+
+# Block direct access to any file that isn't PHP (security)
+<FilesMatch "\.(?!php$)[^.]+$">
+  Order deny,allow
+  Deny from all
+</FilesMatch>
+
+# Security headers for admin panel
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>

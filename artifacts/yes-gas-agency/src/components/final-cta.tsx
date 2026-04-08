@@ -1,4 +1,6 @@
 import { Phone, ArrowRight } from "lucide-react";
+import { useContent } from "../hooks/useContent";
+import { SITE_CONFIG } from "@/config";
 
 const WA_ICON = (
   <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -7,6 +9,8 @@ const WA_ICON = (
 );
 
 export function FinalCTA() {
+  const { content } = useContent();
+
   return (
     <section className="bg-white py-8 lg:py-10 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,29 +37,36 @@ export function FinalCTA() {
               <span className="text-sm font-bold tracking-widest uppercase">Technicians Available Now</span>
             </div>
             
-            <h2 className="font-display font-black text-white leading-tight mb-8" style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", textShadow: "0 8px 30px rgba(0,0,0,0.15)" }}>
-              Don't Wait For An Emergency.<br />
-              <span style={{ color: "#ffd8a8" }}>Get It Fixed Today.</span>
+            <h2 className="font-display font-black text-white leading-tight mb-8 whitespace-pre-line" style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", textShadow: "0 8px 30px rgba(0,0,0,0.15)" }}>
+              {content.contact_title}
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-5 items-center w-full max-w-xxl justify-center mt-4">
-              <a 
-                href="https://wa.me/919849000000" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href={`https://wa.me/${SITE_CONFIG.whatsapp}`}
+                target="_blank"
+                rel="noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-3 bg-white text-[#16a34a] font-bold text-[17px] py-4 px-10 rounded-full transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
                 style={{ boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "whatsapp_click", button_name: "Book on WhatsApp", page: window.location.pathname });
+                }}
               >
                 {WA_ICON}
                 Book on WhatsApp
               </a>
 
-              <a 
-                href="tel:+919849000000" 
+              <a
+                href={`tel:+${SITE_CONFIG.phoneRaw}`}
                 className="w-full sm:w-auto flex items-center justify-center gap-2 font-bold text-[17px] py-4 px-10 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-white outline outline-2 outline-white/40 hover:outline-white/80 hover:bg-white/10"
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "call_click", button_name: "Call Now", page: window.location.pathname });
+                }}
               >
                 <Phone className="w-5 h-5" />
-                Call +91 98490 00000
+                Call {SITE_CONFIG.phone}
                 <ArrowRight className="w-5 h-5 ml-1 hidden sm:block" />
               </a>
             </div>

@@ -1,6 +1,10 @@
 import { CheckCircle2, ShieldCheck, Zap, ArrowRight, Award } from "lucide-react";
+import { useContent } from "../hooks/useContent";
+import { useBookingModal } from "@/context/BookingModalContext";
 
 export function WhyChooseUs() {
+  const { content } = useContent();
+  const { openModal } = useBookingModal();
   const features = [
     { title: "10+ Years Experience", icon: Award },
     { title: "ID-Verified Technicians", icon: ShieldCheck },
@@ -20,7 +24,7 @@ export function WhyChooseUs() {
             <div className="absolute bottom-0 w-[80%] h-10 bg-gray-900/10 rounded-[100%] blur-xl translate-y-5" />
             <div className="relative w-full max-w-[460px]">
               <img
-                src="/technician.png"
+                src={content.about_tech_img}
                 alt="Safe Gas Appliance Servicing"
                 className="w-full rounded-[2rem] object-cover border-[5px] border-white relative z-10"
                 style={{ height: "380px", boxShadow: "0 24px 60px rgba(0,0,0,0.12)" }}
@@ -45,17 +49,14 @@ export function WhyChooseUs() {
           <div className="w-full lg:w-1/2">
             <div className="section-badge mb-4">Why Choose Us</div>
             <h2
-              className="font-black text-gray-900 leading-[1.1] tracking-tight mb-4"
+              className="font-black text-gray-900 leading-[1.1] tracking-tight mb-4 whitespace-pre-line"
               style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
             >
-              Safety is Our{" "}
-              <span className="text-gradient-orange">Religion</span> Today
+              <span dangerouslySetInnerHTML={{ __html: content.about_title.replace("Religion", '<span class="text-gradient-orange">Religion</span>') }} />
             </h2>
 
-            <p className="text-sm text-slate-500 leading-relaxed max-w-lg mb-5">
-              Every technician carries a multi-point safety checklist. Before
-              leaving, we verify zero leakage using certified pressure testing
-              equipment. Your family's safety is non-negotiable.
+            <p className="text-sm text-slate-500 leading-relaxed max-w-lg mb-5 whitespace-pre-line">
+              {content.about_subtitle}
             </p>
 
             {/* Feature List */}
@@ -70,10 +71,10 @@ export function WhyChooseUs() {
               ))}
             </div>
 
-            <a href="https://wa.me/919849000000" className="btn-orange !py-3.5 !px-8 inline-flex group">
+            <button onClick={() => openModal()} className="btn-orange !py-3.5 !px-8 inline-flex group">
               Book An Expert
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </a>
+            </button>
           </div>
 
         </div>

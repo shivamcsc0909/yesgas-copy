@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
+import { SITE_CONFIG } from "@/config";
+import { useContent } from "../hooks/useContent";
 
 // Standard Q/A tailored for a real gas service based in Hyderabad
 const faqs = [
@@ -27,6 +29,7 @@ const faqs = [
 
 export function FAQ() {
   const [open, setOpen] = useState(0);
+  const { content } = useContent();
 
   return (
     <section id="faq" className="py-10 lg:py-14 bg-[#f4f7fb]">
@@ -38,13 +41,13 @@ export function FAQ() {
                <MessageCircle className="w-8 h-8" />
             </div>
             <h2 className="font-black text-gray-900 leading-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.4rem)" }}>
-              Frequently Asked <span className="text-gradient-orange">Questions</span>
+              {content.faq_title}
             </h2>
             <p className="text-base text-slate-500 mb-5 leading-relaxed">
-              Have a question about our repair process, pricing, or safety standards? Find practical answers here.
+              {content.faq_subtitle}
             </p>
             <a
-              href="https://wa.me/919849000000"
+              href={`https://wa.me/${SITE_CONFIG.whatsapp}`}
               className="btn-outline !py-3 !px-7 hover:!border-orange-500 hover:!text-orange-600"
             >
               Ask on WhatsApp

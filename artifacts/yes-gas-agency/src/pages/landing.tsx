@@ -10,9 +10,13 @@ import { FinalCTA } from "../components/final-cta";
 import { Footer } from "../components/footer";
 import { WhatsAppButton } from "../components/whatsapp-button";
 
+import BookingModal from "../components/BookingModal";
+
 export default function Landing() {
   return (
     <main className="relative bg-white">
+
+      <BookingModal />
       <Navbar />
       <Hero />
       <WhyChooseUs />

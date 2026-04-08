@@ -1,4 +1,6 @@
 import { MapPin, Phone } from "lucide-react";
+import { SITE_CONFIG } from "@/config";
+import { useContent } from "../hooks/useContent";
 
 const featuredAreas = [
   "Madhapur", "Gachibowli", "Kondapur", "Kukatpally",
@@ -14,6 +16,7 @@ const otherAreas = [
 ];
 
 export function ServiceAreas() {
+  const { content } = useContent();
   return (
     <section
       id="areas"
@@ -25,11 +28,10 @@ export function ServiceAreas() {
         <div className="text-center mb-6">
           <div className="section-badge mx-auto mb-4">Service Coverage</div>
           <h2 className="font-black text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
-            We Serve All of{" "}
-            <span className="text-gradient-orange">Hyderabad</span>
+            {content.areas_title}
           </h2>
           <p className="text-slate-500 text-lg max-w-xl mx-auto">
-            Technicians stationed across the city to reach you in <strong className="text-gray-700">2–4 hours</strong>.
+            {content.areas_subtitle}
           </p>
         </div>
 
@@ -94,7 +96,7 @@ export function ServiceAreas() {
           <p className="text-gray-400 text-sm mb-5 font-medium">
             Don't see your area? Call us — we likely cover it!
           </p>
-          <a href="tel:+919849000000" className="btn-orange !text-base">
+          <a href={`tel:+${SITE_CONFIG.phoneRaw}`} className="btn-orange !text-base">
             <Phone className="w-5 h-5" />
             Check My Area Availability
           </a>

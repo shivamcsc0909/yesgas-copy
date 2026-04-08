@@ -1,4 +1,5 @@
 import { Star, ShieldCheck } from "lucide-react";
+import { useContent } from "../hooks/useContent";
 
 // Using real 5-star ratings style referencing Urban Company
 const testimonials = [
@@ -26,14 +27,16 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const { content } = useContent();
+
   return (
     <section id="testimonials" className="py-10 lg:py-14 bg-[#fdfcfe] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-8">
           <div className="section-badge mx-auto mb-4">Customer Reviews</div>
-          <h2 className="font-black text-gray-900 leading-[1.15] tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>
-            Trusted by 5,000+ Families in Hyderabad
+          <h2 className="font-black text-gray-900 leading-[1.15] tracking-tight mb-4 whitespace-pre-line" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>
+            {content.testimonials_title}
           </h2>
           <div className="flex items-center justify-center gap-3">
             <div className="flex gap-1" aria-label="5 out of 5 stars">

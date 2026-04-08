@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { Clock, Users, Star } from "lucide-react";
+import { Clock, Users, Star, ArrowRight, Phone } from "lucide-react";
+import { useContent } from "../hooks/useContent";
+import { SITE_CONFIG } from "@/config";
+import { useBookingModal } from "@/context/BookingModalContext";
 
 function useTypewriter(text: string, typeSpeed = 70, deleteSpeed = 40, pauseAfterType = 1800, pauseAfterDelete = 500) {
   const [displayed, setDisplayed] = useState("");
@@ -50,7 +53,9 @@ function useTypewriter(text: string, typeSpeed = 70, deleteSpeed = 40, pauseAfte
 }
 
 export function Hero() {
+  const { content } = useContent();
   const { displayed, done } = useTypewriter("We Fix It Today.", 120, 25, 1800, 500);
+  const { openModal } = useBookingModal();
 
   return (
     <div className="relative">
@@ -62,7 +67,7 @@ export function Hero() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: 'url("/hero-bg.png")',
+            backgroundImage: `url("${content.hero_bg}")`,
             backgroundSize: "cover",
             backgroundPosition: "center top",
             backgroundRepeat: "no-repeat",
@@ -93,15 +98,13 @@ export function Hero() {
 
             {/* Headline */}
             <h1
-              className="font-black text-white mb-5 leading-[1.08] max-w-3xl"
+              className="font-black text-white mb-5 leading-[1.08] max-w-3xl whitespace-pre-line"
               style={{
                 fontSize: "clamp(2.8rem, 6vw, 5rem)",
                 textShadow: "0 3px 20px rgba(0,0,0,0.75)",
               }}
             >
-              Stop Struggling With
-              <br />
-              Your Gas Stove —
+              {content.hero_title}
               <br />
               <span style={{ color: "#fb923c", textShadow: "0 3px 20px rgba(0,0,0,0.7)" }}>
                 {displayed}
@@ -124,13 +127,82 @@ export function Hero() {
 
             {/* Subheadline */}
             <p
-              className="text-white/90 text-lg sm:text-xl mb-0 max-w-lg mx-auto font-medium leading-relaxed"
+              className="text-white/90 text-lg sm:text-xl mb-7 max-w-lg mx-auto font-medium leading-relaxed whitespace-pre-line"
               style={{ textShadow: "0 2px 10px rgba(0,0,0,0.7)" }}
             >
-              Certified technicians at your door in{" "}
-              <strong className="text-white">2–4 hours</strong>. All brands.
-              All problems. 30-day warranty.
+              {content.hero_subtitle}
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto">
+              {/* Book Service Now */}
+              <button
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "book_click", button_name: "Book Service Now", page: window.location.pathname });
+                  openModal();
+                }}
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-2 w-full sm:w-auto cursor-pointer"
+                style={{
+                  background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+                  color: "white",
+                  borderRadius: "50px",
+                  padding: "16px 36px",
+                  fontWeight: "800",
+                  fontSize: "17px",
+                  border: "none",
+                  boxShadow: "0 8px 28px rgba(249,115,22,0.55), 0 3px 8px rgba(249,115,22,0.25)",
+                  transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease",
+                  letterSpacing: "0.01em",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px) scale(1.03)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 14px 36px rgba(249,115,22,0.65), 0 4px 12px rgba(249,115,22,0.3)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0) scale(1)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(249,115,22,0.55), 0 3px 8px rgba(249,115,22,0.25)";
+                }}
+              >
+                Book Service Now
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+
+              {/* Call Now */}
+              <a
+                href={`tel:+${SITE_CONFIG.phoneRaw}`}
+                aria-label="Call"
+                onClick={() => {
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({ event: "call_click", button_name: "Call Now", page: window.location.pathname });
+                }}
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                style={{
+                  color: "white",
+                  borderRadius: "50px",
+                  padding: "16px 36px",
+                  fontWeight: "800",
+                  fontSize: "17px",
+                  textDecoration: "none",
+                  border: "2px solid rgba(255,255,255,0.35)",
+                  background: "rgba(255,255,255,0.10)",
+                  backdropFilter: "blur(8px)",
+                  transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), background 0.2s ease",
+                  letterSpacing: "0.01em",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.22)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.10)";
+                }}
+              >
+                <Phone size={20} />
+                {content.hero_cta}
+              </a>
+            </div>
           </div>
         </div>
 
