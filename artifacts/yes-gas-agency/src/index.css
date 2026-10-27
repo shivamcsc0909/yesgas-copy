@@ -121,6 +121,12 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
   }
 
+/*
+Vikash Dubey
+https://www.vikashdubey.com/
+2026
+*/
+
   .text-gradient-orange {
     background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
     -webkit-background-clip: text;

@@ -6,3 +6,4 @@ import "./index.css";
 (window as any).dataLayer = (window as any).dataLayer || [];
 
 createRoot(document.getElementById("root")!).render(<App />);
+

@@ -131,6 +131,8 @@ const services = [
   },
 ];
 
+import { submitLeadToSheets, submitLeadToPHP } from "@/lib/submitLead";
+
 function BookingForm() {
   const [name, setName]         = useState("");
   const [phone, setPhone]       = useState("");
@@ -139,42 +141,11 @@ function BookingForm() {
   const [success, setSuccess]   = useState(false);
   const [errors, setErrors]     = useState<{ name?: string; phone?: string }>({});
 
-  const submitToSheets = (payload: Record<string, string>) => {
-    if (!SITE_CONFIG.googleSheetsUrl) return;
-    const iframe = document.createElement("iframe");
-    iframe.name = "services-sheets-frame";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    const form = document.createElement("form");
-    form.method = "GET";
-    form.action = SITE_CONFIG.googleSheetsUrl;
-    form.target = "services-sheets-frame";
-    Object.entries(payload).forEach(([k, v]) => {
-      const inp = document.createElement("input");
-      inp.type = "hidden"; inp.name = k; inp.value = v;
-      form.appendChild(inp);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    setTimeout(() => { document.body.removeChild(form); document.body.removeChild(iframe); }, 5000);
-  };
-
-  const submitToPHP = async (payload: Record<string, string>) => {
-    try {
-      await fetch('/api/add_lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch(e) {
-      console.error(e);
-    }
-  };
-
   const validate = () => {
     const e: { name?: string; phone?: string } = {};
-    if (name.trim().length < 2)         e.name  = "Please enter your name";
-    if (!/^\d{10}$/.test(phone.trim())) e.phone = "Enter valid 10-digit number";
+    const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+    if (name.trim().length < 2) e.name = "Please enter your name";
+    if (cleanPhone.length !== 10) e.phone = "Enter valid 10-digit number";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -183,11 +154,34 @@ function BookingForm() {
     ev.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
-    const payload = { name, phone, service, source: "Services Page" };
-    submitToSheets(payload);
-    await submitToPHP(payload);
-    // Redirect immediately on success
-    window.location.href = "/thank-you";
+    const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+    const payload = {
+      name: name.trim(),
+      phone: cleanPhone,
+      service,
+      source: "Services Page"
+    };
+
+    try {
+      await Promise.allSettled([
+        submitLeadToSheets(payload),
+        submitLeadToPHP(payload)
+      ]);
+    } catch (err) {
+      console.error(err);
+    }
+
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: "form_submit",
+      form_name: "services_quick_form",
+      status: "success",
+      page: window.location.pathname,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/thank-you";
+    }, 250);
   };
 
   if (success) {

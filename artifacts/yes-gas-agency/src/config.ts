@@ -36,8 +36,5 @@ export const SITE_CONFIG = {
   // 2. Go to Extensions → Apps Script
   // 3. Paste the code from GOOGLE_SHEETS_SETUP.js (in project root)
   // 4. Click Deploy → New deployment → Web app
-  //    Execute as: Me | Who has access: Anyone
-  // 5. Copy the Web App URL and paste it below
-  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbxmk3iCxcm3hoRWYD0tVmjtBNpkhYDI_EIqqfti09_y2wtnqOkyJXwfN9s9WN3oyZ2V/exec",   // ← PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
-
+  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbzIDYwY8i9NMXVTodJiAxXrKwMYQM3NpnnhdScHwsOHomrUC6oWqKU9tWcsys0QNYcO/exec",   // ← PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
 };

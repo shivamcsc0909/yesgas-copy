@@ -15,6 +15,8 @@ const WA_ICON = (
   </svg>
 );
 
+import { submitLeadToSheets, submitLeadToPHP } from "@/lib/submitLead";
+
 function ContactForm() {
   const [name, setName]       = useState("");
   const [phone, setPhone]     = useState("");
@@ -26,40 +28,11 @@ function ContactForm() {
   const [success, setSuccess]   = useState(false);
   const [errors, setErrors]     = useState<{ name?: string; phone?: string; address?: string }>({});
 
-  const submitToSheets = (payload: Record<string, string>) => {
-    if (!SITE_CONFIG.googleSheetsUrl) return;
-    const iframe = document.createElement("iframe");
-    iframe.name = "contact-sheets-frame";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    const form = document.createElement("form");
-    form.method = "GET";
-    form.action = SITE_CONFIG.googleSheetsUrl;
-    form.target = "contact-sheets-frame";
-    Object.entries(payload).forEach(([k, v]) => {
-      const inp = document.createElement("input");
-      inp.type = "hidden"; inp.name = k; inp.value = v;
-      form.appendChild(inp);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    setTimeout(() => { document.body.removeChild(form); document.body.removeChild(iframe); }, 5000);
-  };
-
-  const submitToPHP = async (payload: Record<string, string>) => {
-    try {
-      await fetch('/api/add_lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (e) { console.error(e); }
-  };
-
   const validate = () => {
     const e: { name?: string; phone?: string; address?: string } = {};
+    const cleanPhone = phone.replace(/\D/g, "").slice(-10);
     if (!name.trim()) e.name = "Please enter your name";
-    if (!/^\d{10}$/.test(phone.trim())) e.phone = "Enter a valid 10-digit mobile number";
+    if (cleanPhone.length !== 10) e.phone = "Enter a valid 10-digit mobile number";
     if (!address.trim()) e.address = "Please enter your area";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -69,11 +42,37 @@ function ContactForm() {
     ev.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
-    const payload = { name, phone, address, service, time, problem, source: "Contact Form" };
-    submitToSheets(payload);
-    await submitToPHP(payload);
-    // Redirect immediately on success
-    window.location.href = "/thank-you";
+    const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+    const payload = {
+      name: name.trim(),
+      phone: cleanPhone,
+      address: address.trim(),
+      service,
+      time,
+      problem: problem.trim(),
+      source: "Contact Form"
+    };
+
+    try {
+      await Promise.allSettled([
+        submitLeadToSheets(payload),
+        submitLeadToPHP(payload)
+      ]);
+    } catch (err) {
+      console.error(err);
+    }
+
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: "form_submit",
+      form_name: "contact_page_form",
+      status: "success",
+      page: window.location.pathname,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/thank-you";
+    }, 250);
   };
 
   const inputClass = (err?: string) =>

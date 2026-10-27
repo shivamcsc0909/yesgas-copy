@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, Phone, CheckCircle2, Send, Loader2, Flame, ShieldCheck, Clock, Star } from "lucide-react";
 import { useBookingModal } from "@/context/BookingModalContext";
 import { SITE_CONFIG } from "@/config";
+import { submitLeadToSheets, submitLeadToPHP } from "@/lib/submitLead";
 
 const SERVICES = [
   "Gas Stove Repair",
@@ -53,43 +54,11 @@ export default function BookingModal() {
     }
   };
 
-  const submitToSheets = (payload: Record<string, string>) => {
-    if (!SITE_CONFIG.googleSheetsUrl) return;
-    const iframe = document.createElement("iframe");
-    iframe.name = "sheets-frame-booking-modal";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    const f = document.createElement("form");
-    f.method = "GET";
-    f.action = SITE_CONFIG.googleSheetsUrl;
-    f.target = "sheets-frame-booking-modal";
-    Object.entries(payload).forEach(([k, v]) => {
-      const input = document.createElement("input");
-      input.type = "hidden"; input.name = k; input.value = v;
-      f.appendChild(input);
-    });
-    document.body.appendChild(f);
-    f.submit();
-    setTimeout(() => {
-      document.body.removeChild(f);
-      document.body.removeChild(iframe);
-    }, 5000);
-  };
-
-  const submitToPHP = async (payload: Record<string, string>) => {
-    try {
-      await fetch("/api/add_lead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    } catch (e) { console.error(e); }
-  };
-
   const validate = () => {
     const e: typeof errors = {};
+    const cleanPhone = form.phone.replace(/\D/g, "").slice(-10);
     if (!form.name.trim()) e.name = "Please enter your name";
-    if (!/^\d{10}$/.test(form.phone.trim())) e.phone = "Enter valid 10-digit number";
+    if (cleanPhone.length !== 10) e.phone = "Enter valid 10-digit number";
     if (!form.area.trim()) e.area = "Please enter your area";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -98,13 +67,24 @@ export default function BookingModal() {
   const handleSubmit = async () => {
     if (!validate()) return;
     setSubmitting(true);
-    const payload = { ...form, source: "Booking Modal" };
-    submitToSheets(payload);
-    await submitToPHP(payload);
+    const cleanPhone = form.phone.replace(/\D/g, "").slice(-10);
+    const payload = { ...form, name: form.name.trim(), phone: cleanPhone, area: form.area.trim(), source: "Booking Modal" };
+
+    try {
+      await Promise.allSettled([
+        submitLeadToSheets(payload),
+        submitLeadToPHP(payload),
+      ]);
+    } catch (err) {
+      console.error(err);
+    }
+
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({ event: "form_submit", form_name: "booking_modal", status: "success", page: window.location.pathname });
-    // Redirect immediately on success
-    window.location.href = "/thank-you";
+
+    setTimeout(() => {
+      window.location.href = "/thank-you";
+    }, 250);
   };
 
   if (!isOpen) return null;

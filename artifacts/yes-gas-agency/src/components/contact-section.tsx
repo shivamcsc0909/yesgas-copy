@@ -3,6 +3,7 @@ import { FadeIn } from "./fade-in";
 import { useState } from "react";
 import { SITE_CONFIG } from "@/config";
 import { useContent } from "../hooks/useContent";
+import { submitLeadToSheets, submitLeadToPHP } from "@/lib/submitLead";
 
 export function ContactSection() {
   const { content } = useContent();
@@ -15,38 +16,6 @@ export function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [formErrors, setFormErrors] = useState<{ name?: string; phone?: string }>({});
-
-  const submitToSheets = (payload: Record<string, string>) => {
-    if (!SITE_CONFIG.googleSheetsUrl) return;
-    const iframe = document.createElement("iframe");
-    iframe.name = "contact-sheets-frame";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    const form = document.createElement("form");
-    form.method = "GET";
-    form.action = SITE_CONFIG.googleSheetsUrl;
-    form.target = "contact-sheets-frame";
-    Object.entries(payload).forEach(([k, v]) => {
-      const inp = document.createElement("input");
-      inp.type = "hidden"; inp.name = k; inp.value = v;
-      form.appendChild(inp);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    setTimeout(() => { document.body.removeChild(form); document.body.removeChild(iframe); }, 5000);
-  };
-
-  const submitToPHP = async (payload: Record<string, string>) => {
-    try {
-      await fetch('/api/add_lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch(e) {
-      console.error(e);
-    }
-  };
 
   return (
     <section 
@@ -146,15 +115,32 @@ export function ContactSection() {
                   className="space-y-8 relative z-10"
                   onSubmit={async (e) => {
                     e.preventDefault();
+                    const cleanPhone = phone.replace(/\D/g, "").slice(-10);
                     const errs: { name?: string; phone?: string } = {};
                     if (!name.trim()) errs.name = "Please enter your name";
-                    if (!phone.trim()) errs.phone = "Please enter your phone number";
+                    if (cleanPhone.length !== 10) errs.phone = "Please enter a valid 10-digit phone number";
                     if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
                     setFormErrors({});
                     setSubmitting(true);
-                    const payload = { name, phone, address, service, time, problem, source: "Contact Form" };
-                    submitToSheets(payload);
-                    await submitToPHP(payload);
+                    const payload = {
+                      name: name.trim(),
+                      phone: cleanPhone,
+                      address: address.trim(),
+                      service,
+                      time,
+                      problem: problem.trim(),
+                      source: "Contact Form"
+                    };
+
+                    try {
+                      await Promise.allSettled([
+                        submitLeadToSheets(payload),
+                        submitLeadToPHP(payload)
+                      ]);
+                    } catch (err) {
+                      console.error(err);
+                    }
+
                     (window as any).dataLayer = (window as any).dataLayer || [];
                     (window as any).dataLayer.push({
                       event: "form_submit",
@@ -162,7 +148,10 @@ export function ContactSection() {
                       status: "success",
                       page: window.location.pathname,
                     });
-                    window.location.href = "/thank-you";
+
+                    setTimeout(() => {
+                      window.location.href = "/thank-you";
+                    }, 250);
                   }}
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
